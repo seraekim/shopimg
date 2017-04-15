@@ -1,6 +1,7 @@
 package kr.co.ccbrain.shopimg;
 
-import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,14 @@ public class HomeController {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		return "redirect:auth/login";
+	public String home(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		if(id == null) {
+			return "redirect:auth/login";
+		} else {
+			return "shopImg/settings";
+		}
 	}
 	
 }

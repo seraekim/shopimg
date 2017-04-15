@@ -26,20 +26,33 @@
         </interceptor>
         
 		<!-- 로그인 체크 -->
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/shopImg/**" /> -->
-<!-- 			<beans:bean class="kr.co.ccbrain.shopimg.interceptor.LoginInterceptor" /> -->
-<!-- 		</interceptor> -->
+		<interceptor>
+			<mapping path="/shopImg/**" />
+			<beans:bean class="kr.co.ccbrain.shopimg.interceptor.AuthInterceptor" />
+		</interceptor>
     </interceptors>
 	
 	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
      
     <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
+    
+    <beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+        <beans:property name="order" value="1"/>
+    </beans:bean>
+    <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <beans:property name="definitions">
+            <beans:list>
+                 <beans:value>WEB-INF/config/tiles/layouts.xml</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
     <beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
-<!--     <beans:bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/> -->
+    
     <beans:bean
-        class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
+        class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"
         p:viewClass="org.springframework.web.servlet.view.JstlView"
-        p:prefix="/WEB-INF/views/" p:suffix=".jsp">
+        p:prefix="WEB-INF/views/" p:suffix=".jsp">
     </beans:bean>
 </beans:beans>

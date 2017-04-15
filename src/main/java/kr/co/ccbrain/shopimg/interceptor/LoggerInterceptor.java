@@ -26,20 +26,23 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final SimpleDateFormat sf = new SimpleDateFormat("hh:mm:ss.sss");
 
+	private String print (HttpServletRequest request) {
+		return sf.format(Calendar.getInstance().getTime()) + " " + request.getRemoteAddr() + ":" 
+	+ request.getRemotePort() + " - " + "(" + request.getMethod() + ") " + request.getRequestURI();
+	}
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		String uri = request.getRequestURI();
-		if (logger.isDebugEnabled() && uri.indexOf("resources") == -1) {
-			System.out.println("▶ Start " + sf.format(Calendar.getInstance().getTime()) + " " + request.getRemoteAddr() + ":" + request.getRemotePort() + " - " + uri);
+		if (logger.isDebugEnabled() && request.getRequestURI().indexOf("resources") == -1) {
+			System.out.println("▶ Start " + print(request));
 		}
 		return super.preHandle(request, response, handler);
 	}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-		String uri = request.getRequestURI();
-		if (logger.isDebugEnabled() && uri.indexOf("resources") == -1) {
-			System.out.println("▶ End   " + sf.format(Calendar.getInstance().getTime()) + " " + request.getRemoteAddr() + ":" + request.getRemotePort() + " - " + uri + "\n");
+		if (logger.isDebugEnabled() && request.getRequestURI().indexOf("resources") == -1) {
+			System.out.println("▶ End   " + print(request) + "\n");
 		}
 	}
 }

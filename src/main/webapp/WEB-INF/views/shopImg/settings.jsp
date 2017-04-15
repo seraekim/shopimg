@@ -1,39 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="ctxp" value="${pageContext.request.contextPath}" />
-<!doctype html>
-<html>
 
-<head>
-  <meta charset="UTF-8">
-  <title>쇼핑몰 화면 보기</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link href="${ctxp}/resources/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-  <!--    <link href="${ctxp}/resources/bootstrap-3.3.7/dist/css/bootstrap-theme.min.css" rel="stylesheet">-->
-  <link href="${ctxp}/resources/lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="${ctxp}/resources/css/non-responsive.css" rel="stylesheet">
-  <link href="${ctxp}/resources/lib/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-  <link href="${ctxp}/resources/css/style.css" rel="stylesheet">
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand">쇼핑몰 화면 보기</a>
-      </div>
-      <div id="navbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#settings">설정</a></li>
-          <li><a href="#search">조회</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <div class="container">
     <div id="settings">
       <h3>설정하기</h3>
@@ -241,11 +207,4 @@
       </table>
     </div>
   </div>
-  <script src="${ctxp}/resources/lib/jquery.min.js"></script>
-  <script src="${ctxp}/resources/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-  <script src="${ctxp}/resources/lib/moment-with-locales.js"></script>
-  <script src="${ctxp}/resources/lib/datetimepicker/bootstrap-datetimepicker.min.js"></script>
   <script src="${ctxp}/resources/js/my.js"></script>
-</body>
-
-</html>

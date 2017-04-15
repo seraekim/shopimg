@@ -1,4 +1,4 @@
-package kr.co.ccbrain.shopimg.util;
+package kr.co.ccbrain.shopimg.cmn;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
@@ -10,6 +10,8 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.sql.DataSource;
+
+import kr.co.ccbrain.shopimg.util.AES256Util;
 
 public class DbcpInit extends org.apache.commons.dbcp.BasicDataSource {
 

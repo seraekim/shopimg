@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.ccbrain.shopimg.mapper.LoginMapper">
+<mapper namespace="kr.co.ccbrain.shopimg.mapper.AuthMapper">
 
 	<insert id="join">
-		insert into tb_member_info values (#{id},#{nm})
+		insert into tb_member_info values (#{id},#{pw})
 	</insert>
 	<select id="search" resultType="map">
 		select * from tb_member_info
-		where member_id = #{id} and member_nm = #{nm}
+		where member_id = #{id}
+	</select>
+	<select id="login" resultType="map">
+		select * from tb_member_info
+		where member_id = #{id} and member_nm = #{pw}
 	</select>
 
 </mapper>

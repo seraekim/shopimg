@@ -19,6 +19,7 @@ import kr.co.ccbrain.shopimg.service.ShopImgService;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/shopImg")
 public class ShopImgController {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -27,7 +28,7 @@ public class ShopImgController {
 	ShopImgService shopImgService;
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(Locale locale, Model model) {
+	public void search(Locale locale, Model model) {
 		List list;
 		try {
 			list = shopImgService.hello();
@@ -36,12 +37,10 @@ public class ShopImgController {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-
-		return "shopImg/search";
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String settings(@RequestParam Map<String, Object> request, Model model) {
+	public void settings(@RequestParam Map<String, Object> request, Model model) {
 		List list;
 		try {
 			list = shopImgService.hello();
@@ -50,7 +49,5 @@ public class ShopImgController {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-
-		return "shopImg/settings";
 	}
 }

@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -20,7 +20,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 
 		if (!StringUtils.isEmpty((String) session.getAttribute("id"))) {
-			logger.debug("로그인된 사용자.");
+			logger.debug("로그인 된 사용자.");
 			isSuccess = true;
 		} else {
 			// ajax 통신인 경우 403 에러 발생시킴
@@ -29,10 +29,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				response.sendError(403);
 			} else {
 				logger.debug("로그인 안된 사용자.");
-				response.sendRedirect(request.getContextPath() + "/login");
+				response.sendRedirect(request.getContextPath() + "/auth/login");
 			}
 		}
 		// 일단 무조건 true
-		return true;
+		return isSuccess;
 	}
 }
