@@ -33,7 +33,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		if (logger.isDebugEnabled() && request.getRequestURI().indexOf("resources") == -1) {
+		if (logger.isDebugEnabled() && request.getRequestURI().indexOf("resources") == -1 && request.getRequestURI().indexOf(".ico") == -1) {
 			System.out.println("▶ Start " + print(request));
 		}
 		return super.preHandle(request, response, handler);
@@ -41,7 +41,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-		if (logger.isDebugEnabled() && request.getRequestURI().indexOf("resources") == -1) {
+		if (logger.isDebugEnabled() && request.getRequestURI().indexOf("resources") == -1 && request.getRequestURI().indexOf(".ico") == -1) {
 			System.out.println("▶ End   " + print(request) + "\n");
 		}
 	}
