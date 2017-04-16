@@ -16,17 +16,20 @@ public class AuthService {
 	@Autowired
 	private AuthMapper authMapper;
 
-	public int join(Map<String, Object> request) throws Exception {
+	public int join(Map mapReq) throws Exception {
 		int cnt = 0;
-		if(authMapper.search(request) != null) {
+		if (authMapper.search(mapReq) != null) {
 			cnt = -1; // 아이디 중복
 		} else {
-			cnt = authMapper.join(request); // affected row count
+			cnt = authMapper.join(mapReq); // affected row count
+			if (cnt == 1) {
+				authMapper.initDateConfig(mapReq);
+			}
 		}
 		return cnt;
 	}
 
-	public Map login(Map<String, Object> request) throws Exception {
-		return authMapper.login(request);
+	public Map login(Map mapReq) throws Exception {
+		return authMapper.login(mapReq);
 	}
 }

@@ -26,7 +26,7 @@
               </div>
             </div>
             <div class="form-bottom">
-              <form role="form" action="/auth/login" method="post" class="login-form">
+              <form id="form_login" role="form" class="login-form">
                 <div class="form-group">
                   <label class="sr-only" for="form-username">아이디</label>
                   <input type="text" name="id" placeholder="아이디" class="form-username form-control" id="form-username">
@@ -35,7 +35,7 @@
                   <label class="sr-only" for="form-password">비밀번호</label>
                   <input type="password" name="pw" placeholder="비밀번호" class="form-password form-control" id="form-password">
                 </div>
-                <button type="submit" class="btn" id="do_login">로그인</button>
+                <button type="button" class="btn" id="do_login">로그인</button>
                 <button type="button" class="btn" id="join">가입하기</button>
               </form>
             </div>

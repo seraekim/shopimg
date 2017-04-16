@@ -1,6 +1,7 @@
 package kr.co.ccbrain.shopimg.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,20 @@ public class ShopImgService {
 	@Autowired
 	private ShopImgMapper shopImgMapper;
 
-	public List hello() throws Exception {
-		return shopImgMapper.hello();
+	public int setConfig(Map mapReq) throws Exception {
+		int result = 0;
+		result = (shopImgMapper.updateDateConfig(mapReq) 
+				+ shopImgMapper.deleteShopConfig(mapReq.get("id")) 
+				+ shopImgMapper.insertShopConfig(mapReq));
+		return result;
+	}
+
+	public Map getDateConfig(Object id) throws Exception {
+		return shopImgMapper.selectDateConfig(id);
+	}
+
+	public List getShopConfig(Object id) throws Exception {
+		return shopImgMapper.selectShopConfig(id);
 	}
 
 }

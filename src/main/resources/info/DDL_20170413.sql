@@ -76,11 +76,11 @@ CREATE TABLE TB_MEMBER_CONFIG
 	-- M:월별,D:일별
 	DATETIME_KIND char(1) DEFAULT 'D' COMMENT 'M:월별,D:일별',
 	-- 월별 선택 월
-	M_DATE varchar(6) COMMENT '월별 선택 월',
+	M_DATE char(6) COMMENT '월별 선택 월',
 	-- 일별조회 시 시작일자
-	S_DATE varchar(8) COMMENT '일별조회 시 시작일자',
+	S_DATE char(8) COMMENT '일별조회 시 시작일자',
 	-- 일별 종료 일자
-	E_DATE varchar(8) COMMENT '일별 종료 일자',
+	E_DATE char(8) COMMENT '일별 종료 일자',
 	PRIMARY KEY (MEMBER_ID)
 ) DEFAULT CHARSET=utf8;
 

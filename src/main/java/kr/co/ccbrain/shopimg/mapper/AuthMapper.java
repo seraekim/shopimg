@@ -2,8 +2,10 @@ package kr.co.ccbrain.shopimg.mapper;
 
 import java.util.Map;
 
+@SuppressWarnings("rawtypes")
 public interface AuthMapper {
-	int join(Map<String, Object> request);
-	Map<String, Object> search(Map<String, Object> request);
-	Map<String, Object> login(Map<String, Object> request);
+	int join(Map mapReq);
+	int initDateConfig(Map mapReq);
+	Map search(Map mapReq);
+	Map login(Map mapReq);
 }

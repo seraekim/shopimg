@@ -23,9 +23,9 @@ public class HomeController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		if(id == null) {
-			return "redirect:auth/login";
+			return "redirect:/auth/login";
 		} else {
-			return "shopImg/settings";
+			return "redirect:/shopImg/settings";
 		}
 	}
 	

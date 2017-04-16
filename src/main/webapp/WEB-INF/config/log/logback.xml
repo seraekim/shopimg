@@ -21,7 +21,7 @@
 		<appender-ref ref="STD" />
 	</logger>
 
-	<root level="error">
-		<appender-ref ref="STD" />
+	<root level="warn">
+		<appender-ref ref="SIMPLE" />
 	</root>
 </Configuration>

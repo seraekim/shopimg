@@ -32,14 +32,12 @@ $(document).ready(function() {
 	});
 
 	$('#do_join').click(function() {
-		console.log($('#form_join').serialize());
 		$.ajax({
 			type : "POST",
 			url : ctxp + "/auth/join",
 			dataType : 'text',
 			data : $('#form_join').serialize()
 		}).done(function(res) {
-			console.log(res);
 			if (res == 1) {
 				alert('가입 되었습니다. 로그인 해주세요.');
 				location.href = ctxp + '/auth/login';
@@ -52,10 +50,23 @@ $(document).ready(function() {
 			console.log(xhr, status, e);
 		});
 	});
-	
-//	$('#do_login').click(function() {
-//		console.log($('#form_login').serialize());
-//		
-//	})
+
+	$('#do_login').click(function() {
+		$.ajax({
+			type : "POST",
+			url : ctxp + "/auth/login",
+			dataType : 'text',
+			data : $('#form_login').serialize()
+		}).done(function(res) {
+			if (res == 0) {
+				alert('일치하는 ID/비밀번호가 존재하지 않습니다.');
+			} else {
+				location.href = ctxp + 'shopImg/settings';
+			}
+		}).fail(function(xhr, status, e) {
+			console.log(xhr, status, e);
+		});
+
+	})
 
 });

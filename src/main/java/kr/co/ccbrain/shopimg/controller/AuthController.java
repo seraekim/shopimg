@@ -34,10 +34,10 @@ public class AuthController {
 
 	// 가입요청
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public @ResponseBody int doJoin(@RequestParam Map<String, Object> request, Model model) {
+	public @ResponseBody int doJoin(@RequestParam Map<String, Object> mapReq, Model model) {
 		int result = 0;
 		try {
-			result = authService.join(request);
+			result = authService.join(mapReq);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -51,19 +51,26 @@ public class AuthController {
 
 	// 로그인요청
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String doLogin(@RequestParam Map<String, Object> request, HttpServletRequest req) {
-		String view = "auth/login";
-		HttpSession ss = req.getSession();
+	public @ResponseBody int doLogin(@RequestParam Map<String, Object> mapReq, HttpServletRequest httpReq) {
+		HttpSession ss = httpReq.getSession();
+		int result = 0;
 		try {
-			if (authService.login(request) != null) {
-				String id = (String) request.get("id");
+			if (authService.login(mapReq) != null) {
+				String id = (String) mapReq.get("id");
 				ss.setAttribute("id", id);
-				view = "shopImg/settings";
+				result = 1;
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-		return view;
+		return result;
 	}
 
+	// 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String doLogout(HttpServletRequest httpReq) {
+		HttpSession ss = httpReq.getSession();
+		ss.invalidate();
+		return "auth/login";
+	}
 }

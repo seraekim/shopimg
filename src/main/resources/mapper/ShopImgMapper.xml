@@ -3,9 +3,47 @@
 
 <mapper namespace="kr.co.ccbrain.shopimg.mapper.ShopImgMapper">
 
-    <select id="hello" resultType="map">
-    	select * from tb_category_info
+	<update id="updateDateConfig">
+		UPDATE tb_member_config 
+		SET    datetime_kind = #{kind}, 
+		       m_date = #{m}, 
+		       s_date = #{sd}, 
+		       e_date = #{ed} 
+		WHERE  member_id = #{id} 
+	</update>
+	
+	<delete id="deleteShopConfig">
+		DELETE FROM tb_sel_shop_list 
+		WHERE  member_id = #{id}
+	</delete>
+	
+	<insert id="insertShopConfig">
+        INSERT INTO tb_sel_shop_list VALUES
+		<foreach collection="chkShop" item="item" separator=",">
+			( '${id}', '${item}')
+        </foreach>
+	</insert>
+	
+    <select id="selectDateConfig" resultType="map">
+    	SELECT datetime_kind AS "kind",
+    	       m_date AS "m",
+    	       s_date AS "sd",
+    	       e_date AS "ed"
+    	FROM   tb_member_config
+    	WHERE  member_id = #{id}
     </select>
+	
+	<select id="selectShopConfig" resultType="map">
+		SELECT t1.service_id as "sId",
+		       t1.service_name as "sNm",
+		       t2.member_id as "mId"
+		FROM   tb_service_info t1
+		       LEFT JOIN (SELECT *
+		                  FROM   tb_sel_shop_list
+		                  WHERE  member_id = #{id}) t2
+		              ON t1.service_id = t2.service_id
+		ORDER  BY t1.service_name
+	</select>
 	
 </mapper>
 

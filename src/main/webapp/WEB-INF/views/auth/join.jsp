@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                   <label class="sr-only" for="form-password">Password</label>
-                  <input type="password" name="nm" placeholder="이름" class="form-password form-control" id="form-password">
+                  <input type="password" name="pw" placeholder="이름" class="form-password form-control" id="form-password">
                 </div>
                 <button type="button" class="btn" id="do_join">가입</button>
               </form>
