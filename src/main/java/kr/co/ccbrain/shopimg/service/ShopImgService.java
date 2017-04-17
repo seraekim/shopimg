@@ -32,5 +32,16 @@ public class ShopImgService {
 	public List getShopConfig(Object id) throws Exception {
 		return shopImgMapper.selectShopConfig(id);
 	}
-
+	
+	public List getShop(Object id) throws Exception {
+		return shopImgMapper.selectShop(id);
+	}
+	
+	public List getShopImg(Object id) throws Exception {
+		return shopImgMapper.selectShopImg(id);
+	}
+	
+	public List getShopImgDates(Object id) throws Exception {
+		return shopImgMapper.selectShopImgDates(id);
+	}
 }

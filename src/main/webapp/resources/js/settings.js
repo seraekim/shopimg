@@ -15,7 +15,6 @@ $('#sel_mon').change(function(){
 
 // datetimepicker 초기화
 $(function() {
-	console.log(m, sd, ed);
 	var sdd = ''; // start default date
 	var edd = ''; // end default date
 	if (sd && ed) {
@@ -37,27 +36,35 @@ $(function() {
 		useCurrent : false
 	});
 
-	$('#datetimepicker2').data("DateTimePicker").minDate(sdd);
-	$('#datetimepicker').data("DateTimePicker").maxDate(edd);
+	if (sd && ed) {
+		$('#datetimepicker2').data("DateTimePicker").minDate(sdd);
+		$('#datetimepicker').data("DateTimePicker").maxDate(edd);
 
-	setBtn(sdd, edd, 'init');
+		setBtn(sdd, edd, 'init');
+	}
 
 	$("#datetimepicker").on("dp.change", function(e) {
-		$('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-		setBtn(e.date, edd);
+		var d = (e.date)? e.date.startOf('day'):e.date;
+		$('#datetimepicker2').data("DateTimePicker").minDate(d);
+		setBtn(d, edd);
+		sdd = d;
 	});
 	$("#datetimepicker2").on("dp.change", function(e) {
+		var d = (e.date)? e.date.startOf('day'):e.date;
 		$('#datetimepicker').data("DateTimePicker").maxDate(e.date);
-		setBtn(sdd, e.date);
+		setBtn(sdd, d);
+		edd = d;
 	});
 
 	function setBtn(sdd, edd, init) {
+		$('#ed_btn_wrap .button').removeClass('active');
+		if(!sdd || !edd) {
+			return;
+		}
 		if(!init) {
 			$('#radio_day').prop('checked',true);
 		}
 		var daysGap = moment.duration(edd.diff(sdd)).asDays();
-		console.log(daysGap);
-		$('#ed_btn_wrap .button').removeClass('active');
 		if (daysGap == 6) {
 			$('#ed_btn_wrap .button').eq(0).addClass('active');
 		} else if (daysGap == 14) {

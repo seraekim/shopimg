@@ -35,8 +35,9 @@ public class ShopImgController {
 	public void search(HttpServletRequest httpReq, Model model) {
 		Object id = httpReq.getSession().getAttribute("id");
 		try {
-			model.addAttribute("dateConfig", shopImgService.getDateConfig(id));
-			model.addAttribute("shopConfig", shopImgService.getShopConfig(id));
+			model.addAttribute("date", shopImgService.getShopImgDates(id));
+			model.addAttribute("shop", shopImgService.getShop(id));
+			model.addAttribute("img", shopImgService.getShopImg(id));
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}

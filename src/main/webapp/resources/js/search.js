@@ -4,15 +4,13 @@ $(function () {
   $('#datetimepicker').datetimepicker({
     dayViewHeaderFormat:'YYYY-MM',
     locale:'ko',
-    format: 'YYYYMMDD',
-    defaultDate: moment().add(-9, 'days')
+    format: 'YYYYMMDD'
   });
   $('#datetimepicker2').datetimepicker({
     dayViewHeaderFormat:'YYYY-MM',
     locale:'ko',
     format: 'YYYYMMDD',
-    defaultDate: moment(),
-    useCurrent: false //Important! See issue #1075
+    useCurrent: false
   });
   $("#datetimepicker").on("dp.change", function (e) {
     $('#datetimepicker2').data("DateTimePicker").minDate(e.date);

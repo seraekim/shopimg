@@ -126,12 +126,12 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="shopimg" path="/" reloadable="true" source="org.eclipse.jst.jee.server:shopimg">
+      <Context sessionCookieName="JSESSIONID01" docBase="shopimg" path="/" reloadable="true" source="org.eclipse.jst.jee.server:shopimg">
         <Manager pathname="">
           <saveOnRestart>false</saveOnRestart>
         </Manager> 
       </Context>
-      <Context path="/img" reloadable="true" docBase="D:/shopimg/lotte"></Context>
+      <Context sessionCookieName="JSESSIONID02" path="/img" reloadable="true" docBase="D:/shopimg/lotte"></Context>
       </Host>
     </Engine>
   </Service>

@@ -9,5 +9,8 @@ public interface ShopImgMapper {
 	int insertShopConfig(Map mapReq);
 	int deleteShopConfig(Object id);
 	List<Map> selectShopConfig(Object id);
+	List<Map> selectShop(Object id);
+	List<Map> selectShopImg(Object id);
+	List<String> selectShopImgDates(Object id);
 	Map selectDateConfig(Object id);
 }

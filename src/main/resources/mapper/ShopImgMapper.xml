@@ -34,9 +34,9 @@
     </select>
 	
 	<select id="selectShopConfig" resultType="map">
-		SELECT t1.service_id as "sId",
-		       t1.service_name as "sNm",
-		       t2.member_id as "mId"
+		SELECT t1.service_id AS "sId",
+		       t1.service_name AS "sNm",
+		       t2.member_id AS "mId"
 		FROM   tb_service_info t1
 		       LEFT JOIN (SELECT *
 		                  FROM   tb_sel_shop_list
@@ -45,5 +45,67 @@
 		ORDER  BY t1.service_name
 	</select>
 	
+	<select id="selectShop" resultType="map">
+		SELECT t1.service_id AS "sId",
+		       t1.service_name AS "sNm",
+		       t1.col_path AS "path"
+		FROM   tb_service_info t1, (SELECT *
+		                  FROM   tb_sel_shop_list
+		                  WHERE  member_id = #{id}) t2
+		where t1.service_id = t2.service_id
+		ORDER  BY t1.service_name
+	</select>
+	
+	<select id="selectShopImg" resultType="map">
+        SELECT   t1.service_name AS "sNm",
+                 concat(t1.col_path,'/',t4.col_dd,t4.col_hh,'/',t3.category_id,'.',t4.col_dd,t4.col_hh,'.browser.jpg') AS "img",
+                 t4.col_dd AS "d",
+                 t4.col_hh AS "h"
+        FROM     tb_service_info t1,
+                 (
+                        SELECT *
+                        FROM   tb_sel_shop_list
+                        WHERE  member_id = #{id}) t2,
+                 tb_category_info t3,
+                 tb_col_result t4,
+                 tb_err_file_info t5,
+                 (
+                        SELECT *
+                        FROM   tb_member_config
+                        WHERE  member_id = #{id}) t6
+        WHERE    t1.service_id = t2.service_id
+        AND      t1.service_id = t3.service_id
+        AND      t3.category_id = t4.category_id
+        AND      t4.category_id = t5.category_id
+        AND      t5.file_kind = '0'
+        AND      t5.file_st = '00'
+        AND
+                 CASE
+                          WHEN t6.datetime_kind = 'D' THEN Date(t4.col_dd) BETWEEN Date(t6.s_date) AND      Date(t6.e_date)
+                          WHEN t6.datetime_kind = 'M' THEN Date(t4.col_dd) BETWEEN Date(t6.m_date+'01') AND      Date(t6.m_date+'01')
+                 END
+        ORDER BY t1.service_name,
+                 t3.category_id
+	</select>
+	<select id="selectShopImgDates" resultType="string">
+        SELECT DISTINCT t4.col_dd AS "d"
+        FROM   tb_service_info t1,
+               (SELECT *
+                FROM   tb_sel_shop_list
+                WHERE  member_id = #{id}) t2,
+               tb_category_info t3,
+               tb_col_result t4,
+               tb_err_file_info t5,
+               (SELECT *
+                FROM   tb_member_config
+                WHERE  member_id = #{id}) t6
+        WHERE  t1.service_id = t2.service_id
+               AND t1.service_id = t3.service_id
+               AND t3.category_id = t4.category_id
+               AND t4.category_id = t5.category_id
+               AND t5.file_kind = '0'
+               AND t5.file_st = '00'
+        ORDER  BY 1 
+	</select>
 </mapper>
 
