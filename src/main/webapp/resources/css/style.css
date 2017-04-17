@@ -1,7 +1,7 @@
 @font-face {
 	font-family: ng;
 	src: url(../font/NanumGothic.eot);
-	src: local(※), url(../font/NanumGothic.woff) format(‘woff’)
+	src: local(※), url(../font/NanumGothic.woff) format('woff')
 }
 
 body {
@@ -139,5 +139,28 @@ td:nth-child(1) {
 }
 
 .container .text-muted {
-    margin: 20px 0;
+	margin: 20px 0;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive,
+	.thumbnail a>img, .thumbnail>img {
+	display: inline;
+	width: 100px;
+	height: 100px;
+	background-image: url('../img/no_img.png');
+	background-size: 100px;
+}
+
+.thum {
+	display: inline;
+}
+
+.thumbnail {
+	display: inline-block;
+	width: 110px;
+}
+.td_h_scroll {
+	overflow-x: auto;
+	white-space: nowrap;
+    width: inherit;
 }

@@ -35,14 +35,25 @@ public class ShopImgController {
 	public void search(HttpServletRequest httpReq, Model model) {
 		Object id = httpReq.getSession().getAttribute("id");
 		try {
+			model.addAttribute("dateConfig", shopImgService.getDateConfig(id));
 			model.addAttribute("date", shopImgService.getShopImgDates(id));
 			model.addAttribute("shop", shopImgService.getShop(id));
-			model.addAttribute("img", shopImgService.getShopImg(id));
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
 	}
 
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public @ResponseBody Map doSearch(@RequestParam Map<String, Object> mapReq, HttpServletRequest httpReq) {
+		Object id = httpReq.getSession().getAttribute("id");
+		try {
+			mapReq.put("img", shopImgService.getShopImg(id));
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return mapReq;
+	}
+	
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
 	public void settings(HttpServletRequest httpReq, Model model) {
 		Object id = httpReq.getSession().getAttribute("id");

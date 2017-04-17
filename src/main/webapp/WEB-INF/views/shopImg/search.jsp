@@ -29,7 +29,7 @@
       </div>
       <button type="button" class="btn btn-outline-primary">검색</button>
       <a href="shopImg/settings" type="button" class="btn btn-primary pull-right">쇼핑몰 설정</a>
-      <table>
+      <table id="tb_shop_img">
         <colgroup>
           <col width="150px" />
           <c:forEach items="${shop}" var="s">
@@ -46,39 +46,18 @@
         <tr>
           <td>${d}</td>
           <td>
-          <c:forEach items="${img}" var="i">
-            <div class="col-xs-4 thum">
+          <div id="d_${d}" class="td_h_scroll">
+          <%-- <c:forEach items="${img}" var="i">
+            <div class="thum"><!-- col-xs-4 thum -->
               <a href="#" class="thumbnail"> <img src="img/${i.img}" data-holder-rendered="true"> </a>
             </div>
-          </c:forEach>
+          </c:forEach> --%>
+          </div>
           </td>
         <tr>
         </c:forEach>
         <!-- <tr>
           <td>2017-04-11</td>
-          <td>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-
-          </td>
-          <td>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-          </td>
           <td>
             <div class="col-xs-4 thum">
               <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
