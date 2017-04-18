@@ -1,4 +1,4 @@
-package kr.co.ccbrain.shopimg;
+package kr.co.ccbrain.shopimg.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +20,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request, Model model) {
+		logger.info("root redirection test");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		if(id == null) {

@@ -1,10 +1,7 @@
 package kr.co.ccbrain.shopimg.controller;
 
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -18,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ccbrain.shopimg.service.ShopImgService;
-import kr.co.ccbrain.shopimg.util.Util;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 @RequestMapping("/shopImg")
+@SuppressWarnings("rawtypes")
 public class ShopImgController {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
