@@ -28,9 +28,10 @@ $(function() {
 //});
 
 $.ajax({
-	type : "POST",
-	url : ctxp + "/shopImg/search",
-	dataType : 'json'
+	type : "GET",
+	url : ctxp + "/shopImg/imgSearch",
+	dataType : 'json',
+	data : $('#form_search').serialize()
 }).done(function(res) {
 	var $tb = $('#tb_shop_img');
 	var tdWidth = 790 / ($tb.find('colgroup col').length-1);

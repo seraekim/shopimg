@@ -6,10 +6,11 @@
       <div class="hmny_col">
         조회범위
       </div>
+      <form id="form_search" method="GET" action="shopImg/search">
       <div class="col-xs-3">
         <div class="form-group">
           <div class='input-group date' id='datetimepicker'>
-            <input type='text' class="form-control" value="${dateConfig.sd}"/>
+            <input name="sd" type='text' class="form-control" value="${dateConfig.sd}"/>
             <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -20,15 +21,16 @@
       <div class="col-xs-3">
         <div class="form-group">
           <div class='input-group date' id='datetimepicker2'>
-            <input type='text' class="form-control" value="${dateConfig.ed}"/>
+            <input name="ed" type='text' class="form-control" value="${dateConfig.ed}"/>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-outline-primary">검색</button>
+      <button type="submit" class="btn btn-outline-primary">검색</button>
       <a href="shopImg/settings" type="button" class="btn btn-primary pull-right">쇼핑몰 설정</a>
+      </form>
       <table id="tb_shop_img">
         <colgroup>
           <col width="150px" />
@@ -47,29 +49,10 @@
           <td>${d}</td>
           <td>
           <div id="d_${d}" class="td_h_scroll">
-          <%-- <c:forEach items="${img}" var="i">
-            <div class="thum"><!-- col-xs-4 thum -->
-              <a href="#" class="thumbnail"> <img src="img/${i.img}" data-holder-rendered="true"> </a>
-            </div>
-          </c:forEach> --%>
           </div>
           </td>
         <tr>
         </c:forEach>
-        <!-- <tr>
-          <td>2017-04-11</td>
-          <td>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-            <div class="col-xs-4 thum">
-              <a href="#" class="thumbnail"> <img src="resources/img/no_img.png" data-holder-rendered="true"> </a>
-            </div>
-          </td>
-        </tr> -->
       </table>
     </div>
   </div>

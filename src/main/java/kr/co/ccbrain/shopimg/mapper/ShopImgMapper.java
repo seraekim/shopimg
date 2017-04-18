@@ -6,11 +6,14 @@ import java.util.Map;
 @SuppressWarnings("rawtypes")
 public interface ShopImgMapper {
 	int updateDateConfig(Map mapReq);
+	Map selectDateConfig(Object id);
+	Map selectDateConfigForSearch(Map mapReq);
+	
 	int insertShopConfig(Map mapReq);
 	int deleteShopConfig(Object id);
 	List<Map> selectShopConfig(Object id);
+	
 	List<Map> selectShop(Object id);
-	List<Map> selectShopImg(Object id);
-	List<String> selectShopImgDates(Object id);
-	Map selectDateConfig(Object id);
+	List<Map> selectShopImg(Map mapReq);
+	List<String> selectShopImgDates(Map mapReq);
 }

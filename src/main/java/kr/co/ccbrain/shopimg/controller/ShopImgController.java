@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,22 +33,24 @@ public class ShopImgController {
 	private ShopImgService shopImgService;
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public void search(HttpServletRequest httpReq, Model model) {
-		Object id = httpReq.getSession().getAttribute("id");
+	public void search(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
+		Object id = session.getAttribute("id");
+		mapReq.put("id", id);
 		try {
-			model.addAttribute("dateConfig", shopImgService.getDateConfig(id));
-			model.addAttribute("date", shopImgService.getShopImgDates(id));
+			model.addAttribute("dateConfig", shopImgService.getDateConfigForSearch(mapReq));
+			model.addAttribute("date", shopImgService.getShopImgDates(mapReq));
 			model.addAttribute("shop", shopImgService.getShop(id));
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
 	}
 
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public @ResponseBody Map doSearch(@RequestParam Map<String, Object> mapReq, HttpServletRequest httpReq) {
-		Object id = httpReq.getSession().getAttribute("id");
+	@RequestMapping(value = "/imgSearch", method = RequestMethod.GET)
+	public @ResponseBody Map doImgSearch(@RequestParam Map<String, Object> mapReq, HttpSession session) {
+		Object id = session.getAttribute("id");
+		mapReq.put("id", id);
 		try {
-			mapReq.put("img", shopImgService.getShopImg(id));
+			mapReq.put("img", shopImgService.getShopImg(mapReq));
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -55,8 +58,8 @@ public class ShopImgController {
 	}
 	
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public void settings(HttpServletRequest httpReq, Model model) {
-		Object id = httpReq.getSession().getAttribute("id");
+	public void settings(HttpSession session, Model model) {
+		Object id = session.getAttribute("id");
 		try {
 			model.addAttribute("dateConfig", shopImgService.getDateConfig(id));
 			model.addAttribute("shopConfig", shopImgService.getShopConfig(id));
@@ -66,8 +69,8 @@ public class ShopImgController {
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.POST)
-	public @ResponseBody int doSettings(@RequestParam("chkShop") String[] chkShop, @RequestParam Map<String, Object> mapReq, HttpServletRequest httpReq, Model model) {
-		Object id = httpReq.getSession().getAttribute("id");
+	public @ResponseBody int doSettings(@RequestParam("chkShop") String[] chkShop, @RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
+		Object id = session.getAttribute("id");
 		mapReq.put("id", id);
 		mapReq.put("chkShop", chkShop);
 		int result = 0;

@@ -29,6 +29,10 @@ public class ShopImgService {
 		return shopImgMapper.selectDateConfig(id);
 	}
 
+	public Map getDateConfigForSearch(Map mapReq) throws Exception {
+		return shopImgMapper.selectDateConfigForSearch(mapReq);
+	}
+	
 	public List getShopConfig(Object id) throws Exception {
 		return shopImgMapper.selectShopConfig(id);
 	}
@@ -37,11 +41,11 @@ public class ShopImgService {
 		return shopImgMapper.selectShop(id);
 	}
 	
-	public List getShopImg(Object id) throws Exception {
-		return shopImgMapper.selectShopImg(id);
+	public List getShopImg(Map mapReq) throws Exception {
+		return shopImgMapper.selectShopImg(mapReq);
 	}
 	
-	public List getShopImgDates(Object id) throws Exception {
-		return shopImgMapper.selectShopImgDates(id);
+	public List getShopImgDates(Map mapReq) throws Exception {
+		return shopImgMapper.selectShopImgDates(mapReq);
 	}
 }

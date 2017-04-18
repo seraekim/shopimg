@@ -1,7 +1,7 @@
 // 설정 > 월별조회 > select option 채우기
 var now = moment();
 now.add(1, 'months');
-for (var i = 0; i < 6; i++) {
+for (var i = 0; i < 24; i++) {
 	$('#sel_mon').append('<option>' + now.add(-1, 'months').format('YYYYMM') + '</option>');
 }
 if (m) {

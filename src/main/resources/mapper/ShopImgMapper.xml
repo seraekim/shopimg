@@ -12,18 +12,6 @@
 		WHERE  member_id = #{id} 
 	</update>
 	
-	<delete id="deleteShopConfig">
-		DELETE FROM tb_sel_shop_list 
-		WHERE  member_id = #{id}
-	</delete>
-	
-	<insert id="insertShopConfig">
-        INSERT INTO tb_sel_shop_list VALUES
-		<foreach collection="chkShop" item="item" separator=",">
-			( '${id}', '${item}')
-        </foreach>
-	</insert>
-	
     <select id="selectDateConfig" resultType="map">
     	SELECT datetime_kind AS "kind",
     	       m_date AS "m",
@@ -32,6 +20,39 @@
     	FROM   tb_member_config
     	WHERE  member_id = #{id}
     </select>
+	
+	<select id="selectDateConfigForSearch" resultType="map">
+        SELECT datetime_kind AS "kind", 
+               m_date        AS "m", 
+               <if test="sd == null or sd == ''">
+               CASE 
+                 WHEN datetime_kind = 'M' THEN Date_format(date(concat(m_date,'01')), '%Y%m%d') 
+                 WHEN datetime_kind = 'D' THEN s_date 
+               END           AS "sd", 
+               CASE 
+                 WHEN datetime_kind = 'M' THEN Date_format(Last_day(concat(m_date,'01')), '%Y%m%d')
+                 WHEN datetime_kind = 'D' THEN e_date 
+               END           AS "ed" 
+               </if>
+               <if test="sd != null and sd != ''">
+                 #{sd} AS "sd",
+                 #{ed} AS "ed"
+               </if>
+        FROM   tb_member_config 
+        WHERE  member_id = #{id} 
+    </select>
+	
+	<insert id="insertShopConfig">
+        INSERT INTO tb_sel_shop_list VALUES
+		<foreach collection="chkShop" item="item" separator=",">
+			( '${id}', '${item}')
+        </foreach>
+	</insert>
+	
+	<delete id="deleteShopConfig">
+		DELETE FROM tb_sel_shop_list 
+		WHERE  member_id = #{id}
+	</delete>
 	
 	<select id="selectShopConfig" resultType="map">
 		SELECT t1.service_id AS "sId",
@@ -68,25 +89,28 @@
                         WHERE  member_id = #{id}) t2,
                  tb_category_info t3,
                  tb_col_result t4,
-                 tb_err_file_info t5,
                  (
                         SELECT *
                         FROM   tb_member_config
-                        WHERE  member_id = #{id}) t6
+                        WHERE  member_id = #{id}) t5
         WHERE    t1.service_id = t2.service_id
         AND      t1.service_id = t3.service_id
         AND      t3.category_id = t4.category_id
-        AND      t4.category_id = t5.category_id
-        AND      t5.file_kind = '0'
-        AND      t5.file_st = '00'
         AND
+               <if test="sd == null or sd == ''">
                  CASE
-                          WHEN t6.datetime_kind = 'D' THEN Date(t4.col_dd) BETWEEN Date(t6.s_date) AND      Date(t6.e_date)
-                          WHEN t6.datetime_kind = 'M' THEN Date(t4.col_dd) BETWEEN Date(t6.m_date+'01') AND      Date(t6.m_date+'01')
+                          WHEN t5.datetime_kind = 'D' THEN t4.col_dd BETWEEN t5.s_date AND t5.e_date
+                          WHEN t5.datetime_kind = 'M' THEN t4.col_dd BETWEEN Date_format(date(concat(t5.m_date,'01')), '%Y%m%d') 
+                                                                         AND Date_format(Last_day(concat(t5.m_date,'01')), '%Y%m%d')
                  END
+               </if>
+               <if test="sd != null and sd != ''">
+                 t4.col_dd BETWEEN #{sd} AND #{ed}
+               </if>
         ORDER BY t1.service_name,
                  t3.category_id
 	</select>
+	
 	<select id="selectShopImgDates" resultType="string">
         SELECT DISTINCT t4.col_dd AS "d"
         FROM   tb_service_info t1,
@@ -95,16 +119,23 @@
                 WHERE  member_id = #{id}) t2,
                tb_category_info t3,
                tb_col_result t4,
-               tb_err_file_info t5,
                (SELECT *
                 FROM   tb_member_config
-                WHERE  member_id = #{id}) t6
+                WHERE  member_id = #{id}) t5
         WHERE  t1.service_id = t2.service_id
                AND t1.service_id = t3.service_id
                AND t3.category_id = t4.category_id
-               AND t4.category_id = t5.category_id
-               AND t5.file_kind = '0'
-               AND t5.file_st = '00'
+               AND
+               <if test="sd == null or sd == ''">
+                   CASE
+                          WHEN t5.datetime_kind = 'D' THEN t4.col_dd BETWEEN t5.s_date AND t5.e_date
+                          WHEN t5.datetime_kind = 'M' THEN t4.col_dd BETWEEN Date_format(date(concat(t5.m_date,'01')), '%Y%m%d') 
+                                                                         AND Date_format(Last_day(concat(t5.m_date,'01')), '%Y%m%d')
+                   END
+               </if>
+               <if test="sd != null and sd != ''">
+                   t4.col_dd BETWEEN #{sd} AND #{ed}
+               </if>
         ORDER  BY 1 
 	</select>
 </mapper>

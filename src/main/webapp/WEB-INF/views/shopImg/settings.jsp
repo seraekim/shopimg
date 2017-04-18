@@ -17,8 +17,8 @@
               <div class="radio radio-danger">
                 
                 <input type="radio" name="kind" id="radio_mon" value="M" <c:if test="${dateConfig.kind == 'M'}">checked</c:if>>
-                <label for="radio_mon">월별조회</label>
-                <select class="form-control" name="m" id="sel_mon"></select>
+                <label for="radio_mon" style="margin-right:11px;">월별조회</label>
+                <select data-size="6" data-width="157px" class="selectpicker" name="m" id="sel_mon"></select>
 <!--                <span id="srch_period_txt" class="m_l_10">검색기간:</span>-->
               </div>
               <div class="radio radio-danger">

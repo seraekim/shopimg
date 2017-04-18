@@ -8,6 +8,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link href="resources/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="resources/lib/bootstrap-select-1.12.2/css/bootstrap-select.min.css" rel="stylesheet">
   <link href="resources/lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="resources/css/non-responsive.css" rel="stylesheet">
   <link href="resources/lib/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -19,6 +20,7 @@
     
   <script src="resources/lib/jquery.min.js"></script>
   <script src="resources/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="resources/lib/bootstrap-select-1.12.2/js/bootstrap-select.min.js"></script>
   <script src="resources/lib/moment-with-locales.js"></script>
   <script src="resources/lib/datetimepicker/bootstrap-datetimepicker.min.js"></script>
   <script>var ctxp = '${ctxp}';</script>
