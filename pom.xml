@@ -2,11 +2,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- =========================================================== -->
+	<!--     Module Description                                      -->
+	<!-- =========================================================== -->
 	<groupId>kr.co.ccbrain</groupId>
 	<artifactId>shopimg</artifactId>
 	<name>shopimg</name>
 	<packaging>war</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<version>0.1</version>
+	
+	<description>
+		srkim's spring web mvc tutorial which deals with 
+		images periodically crawled and captured from somewhat engine.
+	</description>
+	
+	<!-- =========================================================== -->
+	<!--     Developers and Contributors                             -->
+	<!-- =========================================================== -->
+	<developers>
+		<developer>
+			<name>Serae Kim</name>
+			<id>srkim</id>
+			<email>dkzksp0812@naver.com</email>
+			<roles>
+				<role>Java Developer</role>
+				<role>Module Maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+  
+	<!-- =========================================================== -->
+	<!--     Dependency Management                                   -->
+	<!-- =========================================================== -->
 	<properties>
 		<java-version>1.7</java-version>
 		<org.springframework-version>4.3.7.RELEASE</org.springframework-version>
@@ -14,6 +42,7 @@
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 		<org.apache.tiles-version>3.0.7</org.apache.tiles-version>
 	</properties>
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -198,6 +227,7 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<finalName>${project.name}</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
