@@ -1,4 +1,4 @@
-package kr.co.ccbrain.shopimg.cmn;
+package kr.co.ccbrain.shopimg.init;
 
 import java.util.HashSet;
 

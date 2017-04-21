@@ -1,4 +1,4 @@
-package kr.co.ccbrain.shopimg.cmn;
+package kr.co.ccbrain.shopimg.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -6,7 +6,7 @@ import javax.servlet.ServletContextListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ServletContextCycle implements ServletContextListener {
+public class ServletContextLifeCycle implements ServletContextListener {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
