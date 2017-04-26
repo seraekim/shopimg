@@ -45,12 +45,15 @@
           </c:forEach>
         </tr>
         <c:forEach items="${date}" var="d">
+        
         <tr>
           <td>${d}</td>
+          <c:forEach items="${shop}" var="s">
           <td>
-          <div id="d_${d}" class="td_h_scroll">
+          <div id="${s.sId}${d}" class="td_h_scroll">
           </div>
           </td>
+          </c:forEach>
         <tr>
         </c:forEach>
       </table>

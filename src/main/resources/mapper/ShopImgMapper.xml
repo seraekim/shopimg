@@ -79,6 +79,7 @@
 	
 	<select id="selectShopImg" resultType="map">
         SELECT   t1.service_name AS "sNm",
+                 t1.service_id   AS "sId",
                  concat(t1.col_path,'/',t4.col_dd,t4.col_hh,'/',t3.category_id,'.',t4.col_dd,t4.col_hh,'.browser.jpg') AS "img",
                  t4.col_dd AS "d",
                  t4.col_hh AS "h"

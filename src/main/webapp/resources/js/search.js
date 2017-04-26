@@ -38,7 +38,7 @@ $.ajax({
 	$tb.find('td:gt(0)').css('width', tdWidth+'px');
 	console.log(res);
 	for(var i in res.img) {
-		$('#d_'+res.img[i].d).append('<div class="thum"><a href="img/'+res.img[i].img
+		$('#'+res.img[i].sId+res.img[i].d).append('<div class="thum"><a href="img/'+res.img[i].img
 				+'" target="_blank" class="thumbnail"> <img src="img/'
 				+res.img[i].img+'" onerror="this.src = \'resources/img/no_img.png\'"> </a></div>');
 	}
