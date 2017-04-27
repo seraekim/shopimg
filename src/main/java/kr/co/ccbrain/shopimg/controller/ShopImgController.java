@@ -29,6 +29,26 @@ public class ShopImgController {
 	@Autowired
 	private ShopImgService shopImgService;
 
+	@RequestMapping(value = "/search-timeline", method = RequestMethod.GET)
+	public void searchTimeLine(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {}
+	
+	@RequestMapping(value = "/search-timeline", method = RequestMethod.POST)
+	public @ResponseBody Map doSearchTimeLine(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
+		Object id = session.getAttribute("id");
+		mapReq.put("id", id);
+		mapReq.put("sId", "shp11st00101");
+		try {
+			mapReq.put("dateConfig", shopImgService.getDateConfigForSearch(mapReq));
+			mapReq.put("date", shopImgService.getShopImgDates(mapReq));
+			mapReq.put("shop", shopImgService.getShop(id));
+			mapReq.put("img", shopImgService.getShopImg(mapReq));
+			mapReq.put("cate", shopImgService.getCateInfo(mapReq));
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return mapReq;
+	}
+	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public void search(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
 		Object id = session.getAttribute("id");

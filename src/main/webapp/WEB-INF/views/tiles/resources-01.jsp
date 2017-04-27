@@ -23,9 +23,9 @@
         <![endif]-->
   
   <!-- Javascript -->
-  <script src="resources/lib/jquery.min.js"></script>
+  <script src="resources/lib/jquery/jquery.min.js"></script>
   <script src="resources/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-  <script src="resources/lib/jquery.backstretch.min.js"></script>
+  <script src="resources/lib/jquery/jquery.backstretch.min.js"></script>
   <script>var ctxp = '${ctxp}';</script>
   <script src="resources/js/login.js"></script>
 

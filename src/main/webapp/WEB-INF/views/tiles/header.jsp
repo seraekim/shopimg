@@ -9,6 +9,9 @@
         <ul id="nav_menu" class="nav navbar-nav">
           <li id="nav_settings"><a href="shopImg/settings">설정</a></li>
           <li id="nav_search"><a href="shopImg/search">조회</a></li>
+          <li id="nav_search-scroll"><a href="shopImg/settings">pinterest</a></li>
+          <li id="nav_search-timeline"><a href="shopImg/search-timeline">타임라인</a></li>
+          <li id="nav_search-compare"><a href="shopImg/settings">비교</a></li>
         </ul>
         <ul id="nav_session" class="nav navbar-nav navbar-right">
                 <li class="dropdown">

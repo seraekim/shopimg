@@ -18,9 +18,9 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-  <script src="resources/lib/jquery.min.js"></script>
+  <script src="resources/lib/jquery/jquery.min.js"></script>
   <script src="resources/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   <script src="resources/lib/bootstrap-select-1.12.2/js/bootstrap-select.min.js"></script>
-  <script src="resources/lib/moment-with-locales.js"></script>
+  <script src="resources/lib/moment/moment-with-locales.js"></script>
   <script src="resources/lib/datetimepicker/bootstrap-datetimepicker.min.js"></script>
   <script>var ctxp = '${ctxp}';</script>

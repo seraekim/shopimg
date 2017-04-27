@@ -48,4 +48,7 @@ public class ShopImgService {
 	public List getShopImgDates(Map mapReq) throws Exception {
 		return shopImgMapper.selectShopImgDates(mapReq);
 	}
+	public List getCateInfo(Map mapReq) throws Exception {
+		return shopImgMapper.selectCateInfo(mapReq);
+	}
 }

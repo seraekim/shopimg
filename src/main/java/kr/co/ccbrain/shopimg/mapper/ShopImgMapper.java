@@ -16,4 +16,5 @@ public interface ShopImgMapper {
 	List<Map> selectShop(Object id);
 	List<Map> selectShopImg(Map mapReq);
 	List<String> selectShopImgDates(Map mapReq);
+	List<String> selectCateInfo(Map mapReq);
 }

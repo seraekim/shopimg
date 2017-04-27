@@ -4,6 +4,7 @@
 <mapper namespace="kr.co.ccbrain.shopimg.mapper.ShopImgMapper">
 
 	<update id="updateDateConfig">
+	-- updateDateConfig
 		UPDATE tb_member_config 
 		SET    datetime_kind = #{kind}, 
 		       m_date = #{m}, 
@@ -13,6 +14,7 @@
 	</update>
 	
     <select id="selectDateConfig" resultType="map">
+    -- selectDateConfig
     	SELECT datetime_kind AS "kind",
     	       m_date AS "m",
     	       s_date AS "sd",
@@ -22,6 +24,7 @@
     </select>
 	
 	<select id="selectDateConfigForSearch" resultType="map">
+	-- selectDateConfigForSearch
         SELECT datetime_kind AS "kind", 
                m_date        AS "m", 
                <if test="sd == null or sd == ''">
@@ -43,6 +46,7 @@
     </select>
 	
 	<insert id="insertShopConfig">
+	-- insertShopConfig
         INSERT INTO tb_sel_shop_list VALUES
 		<foreach collection="chkShop" item="item" separator=",">
 			( '${id}', '${item}')
@@ -50,11 +54,13 @@
 	</insert>
 	
 	<delete id="deleteShopConfig">
+	-- deleteShopConfig
 		DELETE FROM tb_sel_shop_list 
 		WHERE  member_id = #{id}
 	</delete>
 	
 	<select id="selectShopConfig" resultType="map">
+	-- selectShopConfig
 		SELECT t1.service_id AS "sId",
 		       t1.service_name AS "sNm",
 		       t2.member_id AS "mId"
@@ -67,6 +73,7 @@
 	</select>
 	
 	<select id="selectShop" resultType="map">
+	-- selectShop
 		SELECT t1.service_id AS "sId",
 		       t1.service_name AS "sNm",
 		       t1.col_path AS "path"
@@ -78,8 +85,10 @@
 	</select>
 	
 	<select id="selectShopImg" resultType="map">
+	-- selectShopImg
         SELECT   t1.service_name AS "sNm",
                  t1.service_id   AS "sId",
+                 t3.category_id  AS "cId",
                  concat(t1.col_path,'/',t4.col_dd,t4.col_hh,'/',t3.category_id,'.',t4.col_dd,t4.col_hh,'.browser.jpg') AS "img",
                  t4.col_dd AS "d",
                  t4.col_hh AS "h"
@@ -113,6 +122,7 @@
 	</select>
 	
 	<select id="selectShopImgDates" resultType="string">
+	-- selectShopImgDates
         SELECT DISTINCT t4.col_dd AS "d"
         FROM   tb_service_info t1,
                (SELECT *
@@ -138,6 +148,11 @@
                    t4.col_dd BETWEEN #{sd} AND #{ed}
                </if>
         ORDER  BY 1 
+	</select>
+	
+	<select id="selectCateInfo" resultType="string">
+		SELECT category_id AS "cId" FROM tb_category_info
+		WHERE service_id = #{sId}
 	</select>
 </mapper>
 
