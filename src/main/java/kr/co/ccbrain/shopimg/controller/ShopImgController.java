@@ -29,6 +29,9 @@ public class ShopImgController {
 	@Autowired
 	private ShopImgService shopImgService;
 
+	@RequestMapping(value = "/search-imgscroll", method = RequestMethod.GET)
+	public void searchImgScroll(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {}
+	
 	@RequestMapping(value = "/search-timeline", method = RequestMethod.GET)
 	public void searchTimeLine(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {}
 	
