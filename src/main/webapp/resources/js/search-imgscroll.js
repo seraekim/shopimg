@@ -162,7 +162,7 @@ $(document).ready(function () {
   	for (var i in res.img) {
   		var o = res.img[i];
   		imgList.push(o.img+'.win.jpg');
-  		var imgStrArr = o.img.split('.');
+  		//var imgStrArr = o.img.split('.');
   	}
   	
   	for(var i in res.date) {
