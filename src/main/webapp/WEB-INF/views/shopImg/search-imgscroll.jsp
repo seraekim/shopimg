@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   
   <link href="resources/css/search-imgscroll.css" rel="stylesheet">
+  <link href="resources/css/hover.css" rel="stylesheet">
   <header class="cd-header">
     <h1>Content Filters</h1>
   </header>

@@ -130,7 +130,7 @@ $(document).ready(function () {
   });*/
   
   var loading = false;
-  var dist = 300;
+  var dist = 200;
   var num = 0;
   var imgList = [];
 
@@ -161,7 +161,9 @@ $(document).ready(function () {
   	}*/
   	for (var i in res.img) {
   		var o = res.img[i];
-  		imgList.push(o.img+'.win.jpg');
+  		var time = o.img.split('.')[1].substring(0,8);
+  		var time2 = o.d.substring(0,4)+'-'+o.d.substring(4,6)+'-'+o.d.substring(6,8)+' '+o.h+'시';
+  		imgList.push({img:o.img+'.win.jpg',snm:o.sNm, cid:o.cId, t: time, t2: time2});
   		//var imgStrArr = o.img.split('.');
   	}
   	
@@ -171,10 +173,13 @@ $(document).ready(function () {
   	}
   	
     setInterval(function () {
-      if ((failCnt == 0 || $('.cd-fail-message').css('display') == 'none') && $(window).scrollTop() >= $(document).height() - $(window).height() - dist 
+      //console.log(res.img.length, $('li > .grid > figure > img').length);
+      if ((res.img.length > 0 && $('li > .grid > figure > img').length == 0)||(failCnt == 0 || $('.cd-fail-message').css('display') == 'none') && $(window).scrollTop() >= $(document).height() - $(window).height() - dist 
     		  && !loading && num < res.img.length) {
         loading = true;
-        $(".cd-gallery ul").append('<li class="mix d'+imgList[num].split('.')[1].substring(0,8)+'"><div><img src="img/' + imgList[num] + '"></div></li>');
+        $(".cd-gallery ul").append('<li class="mix d'+imgList[num].t+'"><div class="grid">'+
+        		'<figure class="effect-zoe"><img src="img/' + imgList[num].img + '"><figcaption>'+
+        		imgList[num].snm+'<br>'+imgList[num].cid+'<br>'+imgList[num].t2+'</figcaption></figure></div></li>');
 //        if (num == 9) {
 //          num = 1;
 //        } else {
