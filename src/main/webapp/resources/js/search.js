@@ -39,8 +39,8 @@ $.ajax({
 	console.log(res);
 	for(var i in res.img) {
 		$('#'+res.img[i].sId+res.img[i].d).append('<div class="thum"><a href="img/'+res.img[i].img
-				+'" target="_blank" class="thumbnail"> <img src="img/'
-				+res.img[i].img+'" onerror="this.src = \'resources/img/no_img.png\'"> </a></div>');
+				+'.win.jpg" target="_blank" class="thumbnail"> <img src="img/'
+				+res.img[i].img+'.win.jpg" onerror="this.src = \'resources/img/no_img.png\'"> </a></div>');
 	}
 }).fail(function(xhr, status, e) {
 	console.log(xhr, status, e);
