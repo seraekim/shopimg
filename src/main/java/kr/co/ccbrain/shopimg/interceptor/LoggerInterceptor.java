@@ -24,7 +24,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  */
 public class LoggerInterceptor extends HandlerInterceptorAdapter {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	private final SimpleDateFormat sf = new SimpleDateFormat("hh:mm:ss.sss");
+	private final SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss.sss");
 
 	private String print (HttpServletRequest request) {
 		return sf.format(Calendar.getInstance().getTime()) + " " + request.getRemoteAddr() + ":" 

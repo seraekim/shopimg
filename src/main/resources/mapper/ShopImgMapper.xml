@@ -117,7 +117,9 @@
                <if test="sd != null and sd != ''">
                  t4.col_dd BETWEEN #{sd} AND #{ed}
                </if>
-        ORDER BY t1.service_name,
+        ORDER BY t4.col_dd,
+                 t4.col_hh,
+                 t1.service_name,
                  t3.category_id
 	</select>
 	
