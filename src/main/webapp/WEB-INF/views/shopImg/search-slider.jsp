@@ -187,7 +187,7 @@
 				slideshow : false, //false
 				sync : "#small",
 				start : function(slider) {
-					//$('#sliderWrap').fadeIn(500);
+					currentSlideDate = $('#big .flex-active-slide').data('date').substring(1);
 				},
 				slideshowSpeed : 2000,
 				pausePlay : true,
@@ -195,9 +195,12 @@
 				playText : 'Play',
 				after : function() {
 					if(rangeState == 0) {
-						currentSlideDate = $('#big .flex-active-slide').data('date').substring(1);
-						console.log(currentSlideDate);
-						dateRange.noUiSlider.set(timestamp(currentSlideDate));
+						var a = $('#big .flex-active-slide').data('date').substring(1);
+						if(currentSlideDate != a) {
+							currentSlideDate = a;
+							console.log(currentSlideDate);
+							dateRange.noUiSlider.set(timestamp(currentSlideDate));
+						}
 					}
 				}
 			});
