@@ -37,9 +37,9 @@ $.ajax({
 		var start = o.d.substring(0,4)+'-'+o.d.substring(4,6)+'-'+o.d.substring(6,8) + ' ' + o.h +':00:00';
 		var content = o.sId;
 		var sNm = o.sNm;
-		var imgUrl = o.img;
+		var imgUrl = '/img'+o.img+'.win.jpg';
 		var cId = o.cId;
-		itemList.push({id: o.d+o.h+cId, content: sNm+o.h, start: start, group: cId, 'img': imgUrl});
+		itemList.push({id: o.d+o.h+cId, content: sNm+o.h, start: start, group: cId, 'img': imgUrl, className: 'preview'});
 	}
 	
 	var groups = [];
@@ -80,25 +80,25 @@ $.ajax({
 	};
 	// Create a Timeline
 	var timeline = new vis.Timeline(container, items, groups, options);
-	/*function onClick(event) {
+	/*setTimeout(function () {
+		  //alert('Now everything is loaded!');
+		imagePreview('.vis-item.vis-box.preview', 'body');
+	}, 1000);*/
+	/*function onMousemove(event) {
 		var properties = timeline.getEventProperties(event);
 		var selection = timeline.getSelection();
 		var w = timeline.getWindow();
-		var w = timeline.getWindow();
 		// properties contains things like node id, group, x, y, time, etc.
-		console.log('click',properties);
+		console.log(properties);
 	}
-	container.addEventListener('click', onMouseover);*/
-	timeline.on('select', function(properties) {
-		console.log('selected items: ', properties);
-	});
+	container.addEventListener('mousemove', onClick);*/
+	/*timeline.on('select', function(properties) {
+		console.log('selected items: ', $('#'+properties.items[0]), $(properties.event.target).parent());
+	});*/
+    timeline.on('rangechanged', function (properties) {
+		//console.log('rangechanged: ', properties);
+		imagePreview('.vis-item.vis-box.preview', 'body');
+    });
 }).fail(function(xhr, status, e) {
 	console.log(xhr, status, e);
-});
-
-$(function() {
-	$('.thumbnail').on('click', function() {
-		$('.imagepreview').attr('src', $(this).find('img').attr('src'));
-		$('#imagemodal').modal('show');   
-	});		
 });
