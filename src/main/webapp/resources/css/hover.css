@@ -159,3 +159,28 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 	-webkit-transition-delay: 0.2s;
 	transition-delay: 0.2s;
 }
+
+figure.effect-inact-info figcaption {
+	top: auto;
+	/* bottom: 0; */
+	padding: 0;
+	height: 50%;
+	/* background: #fff; */
+	color: #444;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(0,-100%,0);
+	transform: translate3d(0,-100%,0);
+	opacity: 1;
+	font-size: 11px;
+}
+
+/* .slides li:not(.flex-active-slide) figure.effect-inact-info:hover figcaption */
+figure.effect-inact-info:hover figcaption {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.flex-active-slide figure.effect-inact-info figcaption {
+	display: none;
+}

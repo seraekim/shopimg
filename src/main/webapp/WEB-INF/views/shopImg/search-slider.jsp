@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="resources/lib/flexslider/flexslider.css" rel="stylesheet" />
 <link href="resources/lib/noUiSlider.9.2.0/nouislider.css" rel="stylesheet" />
+<link href="resources/css/hover.css" rel="stylesheet">
 <style>
 .slider {
 	margin: 20px 0 10px !important;
@@ -44,6 +45,18 @@
 	width: 150px;
 	height: 100px;
 }
+.flex-caption {
+  width: 96%;
+  padding: 2%;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  font-size: 14px;
+  line-height: 18px;
+}
+
 </style>
 <div id="sliderWrap">
 	<section class="slider">
@@ -116,8 +129,21 @@
 				}
 			});
 
+			var rangeState = 0;
+			var currentSlideDate;
+			dateRange.noUiSlider.on('start', function(a, b, c, d) {
+				rangeState = 1;
+			});
+			
 			dateRange.noUiSlider.on('end', function(a, b, c, d) {
-				console.log(a, b, c, d);
+				rangeState = 0;
+				if(currentSlideDate != a) {
+					//$('#big').flexslider('pause');
+					$('.carouseler.flexslider ul li[data-date="d'+a+'"]').eq(1).trigger('click');
+					$('.carouseler.flexslider ul li[data-date="d'+a+'"]').eq(0).trigger('click');
+				}
+				//$('#big').data("flexslider").flexAnimate(0, true, true);
+				//$('#big').flexslider(0);
 			});
 
 			/*for ( var i in res.img) {
@@ -138,15 +164,17 @@
 			for ( var i in res.img) {
 				var o = res.img[i];
 				var winImg = o.img + '.win.jpg';
-				$('.mysliders.flexslider ul').append('<li data-date=d'+o.d+'><img src="img/'+winImg+'" /></li>');
-				$('.carouseler.flexslider ul').append('<li data-date=d'+o.d+'><img src="img/'+winImg+'" /></li>');
+				$('.mysliders.flexslider ul').append('<li data-date=d'+o.d+'><div class="grid"><figure class=""><img src="img/'+winImg+'" /><figcaption>'+
+		        		'dfdfdfdf'+'</figcaption></figure></div></li>');
+				$('.carouseler.flexslider ul').append('<li data-date=d'+o.d+'><div class="grid"><figure class="effect-inact-info"><img src="img/'+winImg+'" /><figcaption>'+
+		        		'dfdfdfdf'+'</figcaption></figure></div></li>');
 			}
 
 			$('#small').flexslider({
 				animation : "slide",
 				controlNav : false,
 				animationLoop : false, //false
-				slideshow : true, //false
+				slideshow : false, //false
 				itemWidth : 150,
 				itemMargin : 5,
 				asNavFor : '#big'
@@ -156,7 +184,7 @@
 				animation : "slide",
 				controlNav : false,
 				animationLoop : false, //false
-				slideshow : true, //false
+				slideshow : false, //false
 				sync : "#small",
 				start : function(slider) {
 					//$('#sliderWrap').fadeIn(500);
@@ -165,16 +193,19 @@
 				pausePlay : true,
 				pauseText : 'Pause',
 				playText : 'Play',
-				before : function() {
-					var currentSlideDate = $('#big .flex-active-slide').data('date').substring(1);
-					console.log(currentSlideDate);
-					dateRange.noUiSlider.set(timestamp(currentSlideDate));
+				after : function() {
+					if(rangeState == 0) {
+						currentSlideDate = $('#big .flex-active-slide').data('date').substring(1);
+						console.log(currentSlideDate);
+						dateRange.noUiSlider.set(timestamp(currentSlideDate));
+					}
 				}
 			});
 
-			$('.flex-pause').trigger('click');
-			$('.flex-play').trigger('click');
-
+			//$('.flex-pause').trigger('click');
+			//$('.flex-play').trigger('click');
+			$('#big').flexslider('pause');
+			$('#big').flexslider('play');
 			/* $('.flexslider').flexslider({
 				animation : "slide",
 				controlNav : "thumbnails",
