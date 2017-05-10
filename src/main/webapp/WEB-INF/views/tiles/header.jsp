@@ -56,8 +56,17 @@
       </div>
     </div>
   </nav>
+<div id="spinner">
+	<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i> <span
+		class="sr-only">Loading...</span>
+</div>
 <script>
   var pathArr = window.location.pathname.split( '/' );
   var navSel =  pathArr[pathArr.length - 1];
   $('#nav_' + navSel).addClass('active');
+	$(document).ajaxStart(function() {
+		$('#spinner').show();
+	}).ajaxStop(function() {
+		$('#spinner').hide();
+	});
 </script>
