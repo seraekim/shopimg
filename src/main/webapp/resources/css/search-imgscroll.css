@@ -771,3 +771,30 @@ footer {
 ol, ul {
 	list-style: none;
 }
+
+.grid .pin {
+    position: absolute;
+    width: 40px;
+    top: -30px;
+    left: -2px;
+}
+
+a.compare {
+    color: #ffffff;
+    background-color: #999;
+    border-radius: 3px;
+    cursor: not-allowed;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 1em;
+    height: 30px;
+    line-height: 30px;
+}
+
+a.compare.active {
+    cursor: pointer;
+    background-color: #9dc997;
+}

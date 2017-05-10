@@ -11,14 +11,18 @@
     <div class="cd-tab-filter-wrapper">
       <div class="cd-tab-filter">
         <ul class="cd-filters">
-          <li class="placeholder">
-            <a data-type="all" href="#0" onclick="return false;" >All</a>
-            <!-- selected option on mobile -->
-          </li>
-          <li class="filter"><a class="selected" href="#0" onclick="return false;" data-type="all">All</a></li>
+          <li class="placeholder"><a data-type="all" href="#0" onclick="return false;" >All</a></li>
+          <!-- <li class="filter"><a class="selected" href="#0" onclick="return false;" data-type="all">All</a></li>
           <li class="filter" data-filter=".20170410"><a href="#0" onclick="return false;" data-type="20170410">20170410</a></li>
-          <li class="filter" data-filter=".color-2"><a href="#0" onclick="return false;" data-type="color-2">Color 2</a></li>
+          <li class="filter" data-filter=".color-2"><a href="#0" onclick="return false;" data-type="color-2">Color 2</a></li> -->
+          <!-- <li><a href="#0" onclick="return false;">비교하기</a></li> -->
         </ul>
+        <form id="form" method="POST">
+          <a class="compare">비교하기</a>
+          <input type="hidden" name="img1" value="">
+          <input type="hidden" name="img2" value="">
+        </form>
+      
         <!-- cd-filters -->
       </div>
       <!-- cd-tab-filter -->

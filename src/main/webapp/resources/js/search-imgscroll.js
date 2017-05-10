@@ -166,7 +166,7 @@ $(document).ready(function () {
   		imgList.push({img:o.img+'.win.jpg',snm:o.sNm, cid:o.cId, t: time, t2: time2});
   		//var imgStrArr = o.img.split('.');
   		$(".cd-gallery ul").append('<li class="mix d'+imgList[i].t+'"><div class="grid">'+
-        		'<figure class="effect-zoe"><img src="img/' + imgList[i].img + '"><figcaption>'+
+        		'<figure class="effect-zoe"><img src="img' + imgList[i].img + '"><figcaption>'+
         		imgList[i].snm+'<br>'+imgList[i].cid+'<br>'+imgList[i].t2+'</figcaption></figure></div></li>');
   	}
   	
@@ -175,6 +175,33 @@ $(document).ready(function () {
   				'<label class="checkbox-label" for="checkbox'+i+'">'+res.date[i]+'</label></li>');
   	}
   	
+  	$('.grid > figure > img').on('click',function(){
+  		console.log();
+  		
+  	var $parent = $(this).parent().parent();
+  		if($parent.find('.pin').length) {
+  	  		$parent.find('.pin').remove();
+			$('a.compare').removeClass('active');
+  		} else {
+  		  	if($('.grid .pin').length == 2) {
+  		  		alert('3개 이상 선택할 수 없습니다.');
+  			} else {
+  	  			$parent.append('<img class="pin" src="resources/img/push-pin-icon-15.png">');
+  	  			if($('.grid .pin').length == 2) {
+  	  				$('a.compare').addClass('active');
+  	  			} else {
+  	  			}
+  		  	}
+  		}
+  	});
+  	$('a.compare').on('click',function(){
+  		if($(this).hasClass('active')) {
+  			$('#form input[name="img1"]').val($('.grid .pin').eq(0).siblings('figure').children('img').attr('src'));
+  			$('#form input[name="img2"]').val($('.grid .pin').eq(1).siblings('figure').children('img').attr('src'));
+  			$('#form').attr('action',ctxp + 'shopImg/search-compare').submit();
+  		}
+  		
+  	});
     /*setInterval(function () {
       //console.log(res.img.length, $('li > .grid > figure > img').length);
       if ((res.img.length > 0 && $('li > .grid > figure > img').length == 0)||(failCnt == 0 || $('.cd-fail-message').css('display') == 'none') && $(window).scrollTop() >= $(document).height() - $(window).height() - dist 

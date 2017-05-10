@@ -12,7 +12,7 @@
           <li id="nav_search-slider"><a href="shopImg/search-slider">슬라이더</a></li>
           <li id="nav_search-imgscroll"><a href="shopImg/search-imgscroll">스크롤링</a></li>
           <li id="nav_search-timeline"><a href="shopImg/search-timeline">타임라인</a></li>
-          <li id="nav_search-compare"><a href="shopImg/settings">비교</a></li>
+          <li id="nav_search-compare"><a href="shopImg/search-compare">비교</a></li>
         </ul>
         <ul id="nav_session" class="nav navbar-nav navbar-right">
                 <li class="dropdown">

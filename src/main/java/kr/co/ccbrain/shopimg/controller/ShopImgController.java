@@ -29,6 +29,12 @@ public class ShopImgController {
 	@Autowired
 	private ShopImgService shopImgService;
 
+	@RequestMapping(value = "/search-compare")
+	public void searchCompare(@RequestParam Map<String, Object> mapReq, Model model) {
+		logger.info(mapReq.get("img1")+" "+mapReq.get("img2"));
+		model.addAllAttributes(mapReq);
+	}
+	
 	@RequestMapping(value = "/search-slider", method = RequestMethod.GET)
 	public void searchSlider(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {}
 	
