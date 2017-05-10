@@ -80,7 +80,7 @@
 		FROM   tb_service_info t1, (SELECT *
 		                  FROM   tb_sel_shop_list
 		                  WHERE  member_id = #{id}) t2
-		where t1.service_id = t2.service_id
+		WHERE  t1.service_id = t2.service_id
 		ORDER  BY t1.service_name
 	</select>
 	
@@ -154,7 +154,8 @@
 	
 	<select id="selectCateInfo" resultType="string">
 		SELECT category_id AS "cId" FROM tb_category_info
-		WHERE service_id = #{sId}
+		WHERE  service_id = #{sId}
+		ORDER  BY 1
 	</select>
 </mapper>
 
