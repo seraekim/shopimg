@@ -37,7 +37,7 @@ this.imagePreview = function(cls, base){
         if(horisonEndPos>broWidth){
             $("#preview")
             //.css("top",(e.pageY - xOffset) + "px")
-            .css("left",(e.pageX + yOffset-(horisonEndPos-broWidth)) + "px")
+            .css("left",(e.pageX - $('#preview').outerWidth(true) - yOffset) + "px")
             .fadeIn("slow");
         } else {
             $("#preview")
