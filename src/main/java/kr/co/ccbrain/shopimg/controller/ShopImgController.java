@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,16 @@ public class ShopImgController {
 
 	@RequestMapping(value = "/search-compare")
 	public void searchCompare(@RequestParam Map<String, Object> mapReq, Model model) {
-		logger.info(mapReq.get("img1")+" "+mapReq.get("img2"));
+		String img1 = (String) mapReq.get("img1");
+		String img2 = (String) mapReq.get("img2");
+		
+		if(StringUtils.isEmpty(img1)||StringUtils.isEmpty(img2)) {
+			model.addAttribute("img1", "img/2017041015/shp11st0010100000100.2017041015.win.jpg");
+			model.addAttribute("img2", "img/2017041015/shp11st0010100000117.2017041015.win.jpg");
+		} else {
+			
+		}
+		logger.info(img1+" "+img2);
 		model.addAllAttributes(mapReq);
 	}
 	
