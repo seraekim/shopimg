@@ -1,0 +1,339 @@
+*,
+*:after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../../font/material-icons/MaterialIcons-Regular.eot);
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular')
+    , url(../../font/material-icons/MaterialIcons-Regular.woff2) format('woff2')
+    , url(../../font/material-icons/MaterialIcons-Regular.woff) format('woff')
+    , url(../../font/material-icons/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.srkim-menu-main,
+.srkim-menu-main ul {
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: #5f6f81;
+    list-style: none;
+    text-transform: none;
+    font-weight: 300;
+    line-height: 60px;
+    z-index: 500;
+}
+
+.srkim-menu-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    font-size: 13px;
+    border-bottom: 1px solid #c6d0da;
+}
+
+.srkim-menu-main a {
+    display: block;
+    height: 100%;
+    color: #5f6f81;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.srkim-menu-main a:hover,
+.srkim-menu li.srkim-search-item:hover,
+.srkim-menu li.srkim-search-item:hover a {
+    /*background: #94b8e0;*/
+    background: #5f6f81;
+    color: white;
+}
+
+.srkim-menu-main>li {
+    display: block;
+    float: left;
+    height: 100%;
+    border-right: 1px solid #c6d0da;
+    text-align: center;
+}
+
+
+/* icon-only trigger (menu item) */
+
+.srkim-menu-main li.srkim-trigger {
+    position: relative;
+    width: 60px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.srkim-menu-main>li.right {
+    float: right;
+    border-right: none;
+    border-left: 1px solid #c6d0da;
+}
+
+.srkim-menu-main>li>a {
+    padding: 0 15px;
+    /*text-transform: uppercase;*/
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.srkim-menu-main:after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.srkim-menu-wrapper {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: 60px;
+    border-right: 1px solid #c6d0da;
+    background: white;
+    -webkit-transform: translateX(-60px);
+    -moz-transform: translateX(-60px);
+    transform: translateX(-60px);
+    -webkit-transition: -webkit-transform 0.3s, width 0.3s;
+    -moz-transition: -moz-transform 0.3s, width 0.3s;
+    transition: transform 0.3s, width 0.3s;
+}
+
+.srkim-scroller {
+    position: absolute;
+    overflow-y: scroll;
+    width: 270px;
+    height: 100%;
+}
+
+.srkim-menu {
+    border-bottom: 1px solid #c6d0da;
+    text-align: left;
+    font-size: 18px;
+}
+
+.srkim-menu li:not(:first-child),
+.srkim-menu li li {
+    box-shadow: inset 0 1px #c6d0da;
+}
+
+.srkim-submenu li {
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    transition: height 0.3s;
+}
+
+.srkim-submenu li a {
+    color: #c1c9d1
+}
+
+input.srkim-search {
+    position: relative;
+    z-index: 10;
+    padding-left: 60px;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #5f6f81;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+
+/* placeholder */
+
+.srkim-search::-webkit-input-placeholder {
+    color: #5f6f81
+}
+
+.srkim-search:-moz-placeholder {
+    color: #5f6f81
+}
+
+.srkim-search::-moz-placeholder {
+    color: #5f6f81
+}
+
+.srkim-search:-ms-input-placeholder {
+    color: #5f6f81
+}
+
+
+/* hide placeholder when active in Chrome */
+
+.srkim-search:focus::-webkit-input-placeholder,
+.srkim-menu li.srkim-search-item:hover .srkim-search:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+input.srkim-search:focus {
+    cursor: text
+}
+
+.srkim-menu li.srkim-search-item:hover input.srkim-search {
+    color: white
+}
+
+
+/* placeholder */
+
+.srkim-menu li.srkim-search-item:hover .srkim-search::-webkit-input-placeholder {
+    color: white
+}
+
+.srkim-menu li.srkim-search-item:hover .srkim-search:-moz-placeholder {
+    color: white
+}
+
+.srkim-menu li.srkim-search-item:hover .srkim-search::-moz-placeholder {
+    color: white
+}
+
+.srkim-menu li.srkim-search-item:hover .srkim-search:-ms-input-placeholder {
+    color: white
+}
+
+.srkim-menu-main a.srkim-icon-search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+}
+
+.srkim-icon::before {
+    display: inline-block;
+}
+.srkim-icon i.mi, .srkim-icon i.fa {
+    width: 60px;
+    margin: 0;
+    text-align: center;
+}
+
+i.mi {
+    font-weight: normal;
+    font-variant: normal;
+    speak: none;
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+    position: relative;
+    top: 7px;
+    margin: 4px;
+}
+
+/* if an icon anchor has a span, hide the span */
+
+.srkim-icon span {
+    width: 0;
+    height: 0;
+    display: block;
+    overflow: hidden;
+}
+
+.srkim-icon-menu::before {
+    /*margin-left: -15px;*/
+    vertical-align: -2px;
+    width: 30px;
+    height: 3px;
+    background: #5f6f81;
+    box-shadow: 0 3px white, 0 -6px #5f6f81, 0 -9px white, 0 -12px #5f6f81;
+    content: '';
+}
+
+.srkim-icon-menu:hover::before,
+.srkim-icon-menu.srkim-selected:hover::before {
+    background: white;
+    box-shadow: 0 3px #5f6f81, 0 -6px white, 0 -9px #5f6f81, 0 -12px white;
+}
+
+.srkim-icon-menu.srkim-selected::before {
+    background: #5993cd;
+    box-shadow: 0 3px white, 0 -6px #5993cd, 0 -9px white, 0 -12px #5993cd;
+}
+
+
+/* styles for opening menu */
+
+.srkim-menu-wrapper.srkim-open-all,
+.srkim-menu-wrapper.srkim-open-part {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+.srkim-menu-wrapper.srkim-open-all {
+    width: 240px
+}
+
+.srkim-menu-wrapper.srkim-open-all .srkim-submenu li {
+    height: 60px
+}
+/*
+
+@media screen and (max-width: 422px) {
+    .srkim-menu-wrapper.srkim-open-all {
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        transform: translateX(0px);
+        width: 100%;
+    }
+    .srkim-menu-wrapper.srkim-open-all .srkim-scroller {
+        width: 130%
+    }
+}
+*/
+@media screen and (max-width: 740px) {
+    .icon span {
+        display: none;
+    }
+}
+
+
+.srkim-menu-main a.header_logo, .srkim-menu-main a.header_logo:hover {
+    position: absolute;
+    width: 161px;
+    height: 22px;
+    background: url(../../img/login/logo_top_c.png) no-repeat;
+    left: 50%;
+    top: 16px;
+    margin-left: -80px;
+}
+
+.srkim-grid {
+	width: 180px;
+	display: inline-block;
+}

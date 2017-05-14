@@ -126,7 +126,8 @@ $('#do_settings').click(function() {
 		if (res == 0) {
 			alert('설정이 실패했습니다. 관리자에게 문의하세요.');
 		} else {
-			location.href = ctxp + 'shopImg/search';
+			alert('성공');
+			//location.href = ctxp + 'shopImg/search';
 		}
 	}).fail(function(xhr, status, e) {
 		console.log(xhr, status, e);

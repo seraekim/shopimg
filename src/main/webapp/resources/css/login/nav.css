@@ -1,0 +1,68 @@
+@charset 'utf-8';
+
+
+.con_header {
+    border-top:5px solid #0065a9;
+    height:60px;
+    line-height:65px;
+    background-color:#fff;
+    position:relative;
+    width:100%;   
+}
+
+.h_left_btn {
+    position:absolute;
+    left:30px;
+}
+
+.h_left_btn a>i{
+    color:#006200;
+}
+
+.h_right_btn {
+    position:absolute;
+    right:30px;
+}
+
+.h_right_btn a>i{
+    color:#0065a9;
+}
+
+.logo_c {
+    position:absolute;
+    width:161px;
+    height:22px; 
+    background-image:url(../../img/login/logo_top_c.png);
+    left:50%;
+    top:16px;
+    margin-left:-80px;
+}
+
+.header_logo {
+    display:block;
+    width:161px;
+    height:22px;
+}
+
+.header_btn a>i{
+    font-size:25px;
+}
+
+.header_btn {
+    
+}
+
+
+
+.user_text {
+    position:relative;
+    top:-5px;
+    font-size:16px;
+    color:#0065a9;
+    margin-right:15px;
+    font-weight:400;
+}
+
+body {
+    background: linear-gradient(#eeeeee,#ffffff);
+}

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -98,13 +99,19 @@ public class ShopImgController {
 	
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
 	public void settings(HttpSession session, Model model) {
+		
+	}
+	
+	@ModelAttribute("searchOpt")
+	public Model searchConfig(HttpSession session, Model model) {
 		Object id = session.getAttribute("id");
 		try {
-			model.addAttribute("dateConfig", shopImgService.getDateConfig(id));
-			model.addAttribute("shopConfig", shopImgService.getShopConfig(id));
+			model.addAttribute("date", shopImgService.getDateConfig(id));
+			model.addAttribute("shop", shopImgService.getShopConfig(id));
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
+		return model;
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.POST)

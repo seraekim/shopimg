@@ -14,17 +14,17 @@
 
 <body id="wrap">
 
-	<div id="container_main">
+<!-- 	<div id="container_main"> -->
 
 		<!-- contents START! -->
 		<tiles:insertAttribute name="content" />
 		<!-- contents END! -->
 
 		<!-- footer START! -->
-		<tiles:insertAttribute name="footer" />
+<%-- 		<tiles:insertAttribute name="footer" /> --%>
 		<!-- footer END! -->
 
-	</div>
+<!-- 	</div> -->
 
 
 </body>

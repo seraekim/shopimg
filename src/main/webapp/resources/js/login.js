@@ -1,15 +1,10 @@
 $(document).ready(function() {
 
-	/*
-	 * Fullscreen background
-	 */
-	$.backstretch(ctxp + "/resources/img/background_shop.jpg");
+	/*$.backstretch(ctxp + "/resources/img/background_shop.jpg");
 	$('.backstretch').css({
 		'filter' : 'brightness(0.5) grayscale(1) blur(2px)'
 	});
-	/*
-	 * Form validation
-	 */
+
 	$('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
 		$(this).removeClass('input-error');
 	});
@@ -25,7 +20,7 @@ $(document).ready(function() {
 			}
 		});
 
-	});
+	});*/
 
 	$('#join').click(function() {
 		location.href = ctxp + '/auth/join';
@@ -61,7 +56,7 @@ $(document).ready(function() {
 			if (res == 0) {
 				alert('일치하는 ID/비밀번호가 존재하지 않습니다.');
 			} else {
-				location.href = ctxp + 'shopImg/settings';
+				location.href = ctxp + 'shopImg/search-slider';
 			}
 		}).fail(function(xhr, status, e) {
 			console.log(xhr, status, e);
