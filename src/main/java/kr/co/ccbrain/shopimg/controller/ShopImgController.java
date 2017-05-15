@@ -47,32 +47,37 @@ public class ShopImgController {
 	}
 	
 	@RequestMapping(value = "/search-slider", method = RequestMethod.GET)
-	public void searchSlider(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {}
+	public void searchSlider(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
+		searchConfig(session, model);
+	}
 	
 	@RequestMapping(value = "/search-imgscroll", method = RequestMethod.GET)
-	public void searchImgScroll(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {}
+	public void searchImgScroll(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
+		searchConfig(session, model);
+	}
 	
 	@RequestMapping(value = "/search-timeline", method = RequestMethod.GET)
-	public void searchTimeLine(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {}
+	public void searchTimeLine(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
+		searchConfig(session, model);
+	}
 	
-	@RequestMapping(value = "/search-timeline", method = RequestMethod.POST)
-	public @ResponseBody Map doSearchTimeLine(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
+	/*@RequestMapping(value = "/settings", method = RequestMethod.GET)
+	public void settings(HttpSession session, Model model) {
+		
+	}*/
+	
+	//@ModelAttribute("opt")
+	private void searchConfig(HttpSession session, Model model) {
 		Object id = session.getAttribute("id");
-		mapReq.put("id", id);
-		mapReq.put("sId", "shp11st00101");
 		try {
-			mapReq.put("dateConfig", shopImgService.getDateConfigForSearch(mapReq));
-			mapReq.put("date", shopImgService.getShopImgDates(mapReq));
-			mapReq.put("shop", shopImgService.getShop(id));
-			mapReq.put("img", shopImgService.getShopImg(mapReq));
-			mapReq.put("cate", shopImgService.getCateInfo(mapReq));
+			model.addAttribute("dateOpt", shopImgService.getDateConfig(id));
+			model.addAttribute("shopOpt", shopImgService.getShopConfig(id));
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-		return mapReq;
+		//return model;
 	}
-	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public void search(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
 		Object id = session.getAttribute("id");
 		mapReq.put("id", id);
@@ -95,30 +100,31 @@ public class ShopImgController {
 			logger.error(e.getMessage(), e);
 		}
 		return mapReq;
-	}
+	}*/
 	
-	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public void settings(HttpSession session, Model model) {
-		
-	}
-	
-	@ModelAttribute("searchOpt")
-	public Model searchConfig(HttpSession session, Model model) {
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public @ResponseBody Map doSearchTimeLine(@RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
 		Object id = session.getAttribute("id");
+		mapReq.put("id", id);
+		//mapReq.put("sId", "shp11st00101");
 		try {
-			model.addAttribute("date", shopImgService.getDateConfig(id));
-			model.addAttribute("shop", shopImgService.getShopConfig(id));
+			//mapReq.put("dateConfig", shopImgService.getDateConfigForSearch(mapReq));
+			mapReq.put("date", shopImgService.getShopImgDates(mapReq));
+			mapReq.put("shop", shopImgService.getShop(id));
+			mapReq.put("img", shopImgService.getShopImg(mapReq));
+			mapReq.put("cate", shopImgService.getCateInfo(mapReq));
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
-		return model;
+		return mapReq;
 	}
-
+	
 	@RequestMapping(value = "/settings", method = RequestMethod.POST)
 	public @ResponseBody int doSettings(@RequestParam("chkShop") String[] chkShop, @RequestParam Map<String, Object> mapReq, HttpSession session, Model model) {
 		Object id = session.getAttribute("id");
 		mapReq.put("id", id);
 		mapReq.put("chkShop", chkShop);
+		logger.info(mapReq+"");
 		int result = 0;
 		try {
 			result = shopImgService.setConfig(mapReq);

@@ -12,13 +12,13 @@
 						<li><a href="shopImg/search-timeline" class="srkim-icon" title="타임라인"><i class="mi">timeline</i>타임라인</a></li>
 						<li><a href="shopImg/search-compare" class="srkim-icon" title="비교"><i class="mi">compare</i>비교</a></li>
 						<li><a class="srkim-icon" title="조회" data-toggle="modal" data-target="#myModal"><i class="mi">search</i>조회</a></li>
-						<li><a class="srkim-icon" title="필터"><i class="fa fa-filter fa-lg" aria-hidden="true"></i></a></li>
+						<!-- <li><a class="srkim-icon" title="필터"><i class="fa fa-filter fa-lg" aria-hidden="true"></i></a></li> -->
+						<!-- <li><a class="srkim-icon" title="정보"><i class="mi">info</i>정보</a></li> -->
 					</ul>
 				</div>
 				<!-- /srkim-scroller -->
 			</nav></li>
 		<li><a class="header_logo"><span class="hide">sitescraper</span></a></li>
-		<li class="right"><a class="icon"><i class="mi">info</i><span></span></a></li>
 		<li class="right"><a class="icon"><i class="mi">person</i><span>test</span></a></li>
 	</ul>
 </div>
@@ -39,15 +39,15 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div style="margin-left: 20px">
+				<form id="form_settings" style="margin-left: 20px">
 					<div class="radio radio-danger">
-						<input type="radio" name="kind" id="radio_mon" value="M" <c:if test="${searchOpt.date.kind == 'M'}">checked</c:if>>
+						<input type="radio" name="kind" id="radio_mon" value="M" <c:if test="${dateOpt.kind == 'M'}">checked</c:if>>
 						<label for="radio_mon">월별조회</label> <select data-size="6" class="selectpicker col-xs-4" name="m" id="sel_mon"></select>
 						<!--                <span id="srch_period_txt" class="m_l_10">검색기간:</span>-->
 					</div>
 					<div class="radio radio-danger">
 						<div class="hmny_col">
-							<input type="radio" name="kind" id="radio_day" value="D" <c:if test="${searchOpt.date.kind == 'D'}">checked</c:if>>
+							<input type="radio" name="kind" id="radio_day" value="D" <c:if test="${dateOpt.kind == 'D'}">checked</c:if>>
 							<label for="radio_day">일별조회</label>
 						</div>
 						<div class="col-xs-4" style="margin-left: 4px;">
@@ -77,17 +77,17 @@
 						<div class="button">15일</div>
 						<div class="button">1개월</div>
 					</div>
-					<c:forEach items="${searchOpt.shop}" var="shop">
-						<div class="checkbox srkim-grid">
-							<input id="${shop.sId}" name="chkShop" class="styled" type="checkbox" value="${shop.sId}"
+					<c:forEach items="${shopOpt}" var="shop">
+						<div class="radio srkim-grid">
+							<input id="${shop.sId}" name="chkShop" type="radio" value="${shop.sId}"
 								<c:if test="${!empty shop.mId}">checked</c:if>> <label for="${shop.sId}">${shop.sNm}</label>
 						</div>
 					</c:forEach>
-				</div>
+				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-				<button id="do_settings" type="button" class="btn btn-primary">확인</button>
+				<button id="do_settings" type="button" data-dismiss="modal" class="btn btn-primary">확인</button>
 			</div>
 		</div>
 	</div>
@@ -105,8 +105,8 @@
 </script>
 
 <script>
-	var m = '${searchOpt.date.m}';
-	var sd = '${searchOpt.date.sd}';
-	var ed = '${searchOpt.date.ed}';
+	var m = '${dateOpt.m}';
+	var sd = '${dateOpt.sd}';
+	var ed = '${dateOpt.ed}';
 </script>
 <script src="resources/js/settings.js"></script>

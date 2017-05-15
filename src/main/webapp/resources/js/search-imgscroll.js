@@ -137,7 +137,7 @@ $(document).ready(function () {
 
   $.ajax({
   	type : "POST",
-  	url : ctxp + "/shopImg/search-timeline",
+  	url : ctxp + "/shopImg/search",
   	dataType : 'json',
   	data : $('#form_search').serialize()
   }).done(function(res) {
@@ -165,18 +165,22 @@ $(document).ready(function () {
   		var time2 = o.d.substring(0,4)+'-'+o.d.substring(4,6)+'-'+o.d.substring(6,8)+' '+o.h+'시';
   		imgList.push({img:o.img+'.win.jpg',snm:o.sNm, cid:o.cId, t: time, t2: time2});
   		//var imgStrArr = o.img.split('.');
-  		$(".cd-gallery ul").append('<li class="mix d'+imgList[i].t+'"><div class="grid">'+
+  		$(".cd-gallery ul").append('<li class="mix d'+imgList[i].t+' c'+imgList[i].cid+'"><div class="grid">'+
         		'<figure class="effect-zoe"><img src="img' + imgList[i].img + '"><figcaption>'+
         		imgList[i].snm+'<br>'+imgList[i].cid+'<br>'+imgList[i].t2+'</figcaption></figure></div></li>');
   	}
   	
-  	for(var i in res.date) {
+  	/*for(var i in res.date) {
   		$('.cd-filter-block ul').append('<li><input class="filter" data-filter=".d'+res.date[i]+'" type="checkbox" id="checkbox'+i+'">'+
   				'<label class="checkbox-label" for="checkbox'+i+'">'+res.date[i]+'</label></li>');
+  	}*/
+  	for(var i in res.date) {
+  		$('.cd-filter-block .cd-filters:eq(0) select').append('<option value=".d'+res.date[i]+'">'+res.date[i]+'</option>');
   	}
-  	
+  	for(var i in res.cate) {
+  		$('.cd-filter-block .cd-filters:eq(1) select').append('<option value=".c'+res.cate[i]+'">'+res.cate[i]+'</option>');
+  	}
   	$('.grid > figure > img').on('click',function(){
-  		console.log();
   		
   	var $parent = $(this).parent().parent();
   		if($parent.find('.pin').length) {

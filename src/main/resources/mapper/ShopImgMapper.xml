@@ -154,7 +154,7 @@
 	
 	<select id="selectCateInfo" resultType="string">
 		SELECT category_id AS "cId" FROM tb_category_info
-		WHERE  service_id = #{sId}
+		WHERE  service_id IN (SELECT service_id FROM tb_sel_shop_list WHERE member_id = #{id})
 		ORDER  BY 1
 	</select>
 </mapper>

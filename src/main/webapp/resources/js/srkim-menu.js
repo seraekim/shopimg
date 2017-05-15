@@ -19,7 +19,7 @@
         },
         _initEvents: function () {
             var self = this;
-            /*this.trigger
+            this.trigger
                 .on('mouseover', function (ev) {
                     self._openIconMenu();
                 })
@@ -28,23 +28,23 @@
                 })
                 .on('click', function (ev) {
 
-                });*/
+                });
 
-            /*this.menu
+            this.menu
                 .on('mouseover', function (ev) {
                     self._openMenu();
                 }).on('mouseout', function (ev) {
                     self._closeMenu();
-                });*/
+                });
 
-            $(document).on('mousemove', function (e) {
-                if(e.pageX <= 60) {
+            /*$(document).on('mousemove', function (e) {
+                if(e.pageX <= 10) {
                     self._openIconMenu();
                 } else {
                     self._closeIconMenu();
                 }
                 //console.log("pageX: " + e.pageX + ", pageY: " + e.pageY);
-            });
+            });*/
 
         },
         _openIconMenu: function () {

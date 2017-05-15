@@ -3,11 +3,11 @@
   
   <link href="resources/css/search-imgscroll.css" rel="stylesheet">
   <link href="resources/css/hover.css" rel="stylesheet">
-  <header class="cd-header">
+  <!-- <header class="cd-header">
     <h1>Content Filters</h1>
-  </header>
+  </header> -->
 
-  <div class="cd-main-content">
+  <div class="cd-main-content is-fixed">
     <div class="cd-tab-filter-wrapper">
       <div class="cd-tab-filter">
         <ul class="cd-filters">
@@ -41,41 +41,40 @@
           <h4>Search</h4>
 
           <div class="cd-filter-content">
-            <input type="search" placeholder="Try color-1...">
+            <input type="search" placeholder="날짜/카테고리">
           </div>
-          <!-- cd-filter-content -->
         </div>
-        <!-- cd-filter-block -->
 
-        <div class="cd-filter-block">
-          <h4>Check boxes</h4>
-
+        <!-- <div class="cd-filter-block">
+          <h4>날짜</h4>
           <ul class="cd-filter-content cd-filters list">
           </ul>
-          <!-- cd-filter-content -->
-        </div>
-        <!-- cd-filter-block -->
-
+        </div> -->
+        
         <div class="cd-filter-block">
-          <h4>Select</h4>
+          <h4>날짜</h4>
+          <div class="cd-filter-content">
+            <div class="cd-select cd-filters">
+              <select class="filter" name="selectThis" id="selectThis">
+                <option value="">날짜를 고르세요.</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cd-filter-block">
+          <h4>카테고리</h4>
 
           <div class="cd-filter-content">
             <div class="cd-select cd-filters">
               <select class="filter" name="selectThis" id="selectThis">
-                <option value="">Choose an option</option>
-                <option value=".option1">Option 1</option>
-                <option value=".option2">Option 2</option>
-                <option value=".option3">Option 3</option>
-                <option value=".option4">Option 4</option>
+                <option value="">카테고리를 고르세요.</option>
               </select>
             </div>
-            <!-- cd-select -->
           </div>
-          <!-- cd-filter-content -->
         </div>
-        <!-- cd-filter-block -->
 
-        <div class="cd-filter-block">
+        <!-- <div class="cd-filter-block">
           <h4>Radio buttons</h4>
 
           <ul class="cd-filter-content cd-filters list">
@@ -94,16 +93,13 @@
               <label class="radio-label" for="radio3">Choice 3</label>
             </li>
           </ul>
-          <!-- cd-filter-content -->
-        </div>
-        <!-- cd-filter-block -->
+        </div> -->
       </form>
 
-      <a href="#0" onclick="return false;" class="cd-close">Close</a>
+      <a onclick="return false;" class="cd-close">Close</a>
     </div>
-    <!-- cd-filter -->
 
-    <a href="#0" onclick="return false;" class="cd-filter-trigger">Filters</a>
+    <a onclick="return false;" class="cd-filter-trigger">Filters</a>
   </div>
   <script src="resources/lib/mixitup/jquery.mixitup.min.js"></script>
   <script src="resources/js/search-imgscroll.js"></script>

@@ -25,7 +25,7 @@ var container = document.getElementById('visualization');
 
 $.ajax({
 	type : "POST",
-	url : ctxp + "/shopImg/search-timeline",
+	url : ctxp + "/shopImg/search",
 	dataType : 'json',
 	data : $('#form_search').serialize()
 }).done(function(res) {
@@ -76,7 +76,16 @@ $.ajax({
 				month : 'YYYY',
 				year : ''
 			}
-		}
+		},
+		groupOrder: function (a, b) {
+			if ( a.id < b.id )
+				return 1;
+			if ( a.id > b.id )
+				return -1;
+			return 0;
+		},
+		verticalScroll: true,
+		zoomKey: 'ctrlKey'
 	};
 	// Create a Timeline
 	var timeline = new vis.Timeline(container, items, groups, options);

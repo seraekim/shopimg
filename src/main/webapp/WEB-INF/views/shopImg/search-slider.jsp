@@ -31,8 +31,11 @@
 	width: 925px;
 	margin: 0 auto;
 	position: relative;
+	left: -99999px;
 }
-
+#sliderWrap.load {
+	left: 0;
+}
 .flex-direction-nav a {
 	height: 47px;
 }
@@ -56,20 +59,15 @@
   font-size: 14px;
   line-height: 18px;
 }
-
+.grid figure figcaption {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.65);
+    width: auto;
+    height: auto;
+}
 </style>
 <div id="sliderWrap">
-	<section class="slider">
-		<div id="big" class="mysliders flexslider">
-			<ul class="slides">
-			</ul>
-		</div>
-		<div id="small" class="carouseler flexslider">
-			<ul class="slides">
-			</ul>
-		</div>
-	</section>
-	<div id="date-range"></div>
+
 </div>
 <script src="resources/lib/flexslider/jquery.flexslider.js"></script>
 <script src="resources/js/wNumb.js"></script>
@@ -97,11 +95,25 @@
 	$(document).ready(function() {
 		$.ajax({
 			type : "POST",
-			url : ctxp + "/shopImg/search-timeline",
-			dataType : 'json',
-			data : $('#form_search').serialize()
+			url : ctxp + "/shopImg/search",
+			dataType : 'json'
+			//,data : $('#form_search').serialize()
 		}).done(function(res) {
 			console.log(res);
+			$('#sliderWrap').removeClass('load')
+			$('#sliderWrap').html('<section class="slider">'+
+					'<div id="big" class="mysliders flexslider">'+
+					'<ul class="slides">'+
+					'</ul>'+
+				'</div>'+
+				'<div id="small" class="carouseler flexslider">'+
+					'<ul class="slides">'+
+					'</ul>'+
+				'</div>'+
+			'</section>'+
+			'<div id="date-range"></div>');
+			if(res.date.length && res.img.length) {
+				
 			var itemList = [];
 			var dateRange = document.getElementById('date-range');
 			//var date2NumArr = res.date.map(Number);
@@ -165,9 +177,10 @@
 				var o = res.img[i];
 				var winImg = o.img + '.win.jpg';
 				$('.mysliders.flexslider ul').append('<li data-date=d'+o.d+'><div class="grid"><figure class=""><img src="img/'+winImg+'" /><figcaption>'+
-		        		'dfdfdfdf'+'</figcaption></figure></div></li>');
-				$('.carouseler.flexslider ul').append('<li data-date=d'+o.d+'><div class="grid"><figure class="effect-inact-info"><img src="img/'+winImg+'" /><figcaption>'+
-		        		'dfdfdfdf'+'</figcaption></figure></div></li>');
+						o.sNm+' '+o.cId+'<br>'+o.d+' '+o.h+'시'+'</figcaption></figure></div></li>');
+// 				$('.carouseler.flexslider ul').append('<li data-date=d'+o.d+'><div class="grid"><figure class="effect-inact-info"><img src="img/'+winImg+'" /><figcaption>'+
+// 		        		'dfdfdfdf'+'</figcaption></figure></div></li>');
+				$('.carouseler.flexslider ul').append('<li data-date=d'+o.d+'><img src="img/'+winImg+'" /></li>');
 			}
 
 			$('#small').flexslider({
@@ -189,7 +202,7 @@
 				start : function(slider) {
 					currentSlideDate = $('#big .flex-active-slide').data('date').substring(1);
 				},
-				slideshowSpeed : 2000,
+				slideshowSpeed : 3000,
 				pausePlay : true,
 				pauseText : 'Pause',
 				playText : 'Play',
@@ -215,6 +228,11 @@
 				start : function(slider) {
 				}
 			}); */
+			setTimeout(function(){$('#sliderWrap').addClass('load');}, 100);
+			
+			} else {
+				alert('검색결과가 없습니다.');
+			}
 		}).fail(function(xhr, status, e) {
 			console.log(xhr, status, e);
 		});
