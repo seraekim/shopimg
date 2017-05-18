@@ -3,6 +3,7 @@ package kr.co.ccbrain.shopimg.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -52,6 +53,8 @@ public class AuthController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody int doLogin(@RequestParam Map<String, Object> mapReq, HttpServletRequest httpReq) {
 		HttpSession ss = httpReq.getSession();
+		//httpRes.setContentType("text/plain");
+	    //response.setCharacterEncoding("UTF-8");
 		int result = 0;
 		try {
 			if (authService.login(mapReq) != null) {
@@ -60,6 +63,7 @@ public class AuthController {
 				result = 1;
 			}
 		} catch (Exception e) {
+			result = -1;
 			logger.error(e.getMessage(), e);
 		}
 		return result;

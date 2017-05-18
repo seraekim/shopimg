@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
 	/*$.backstretch(ctxp + "/resources/img/background_shop.jpg");
 	$('.backstretch').css({
@@ -22,11 +21,11 @@ $(document).ready(function() {
 
 	});*/
 
-	$('#join').click(function() {
+	$('#join').on('click', function() {
 		location.href = ctxp + '/auth/join';
 	});
 
-	$('#do_join').click(function() {
+	$('#do_join').on('click', function() {
 		$.ajax({
 			type : "POST",
 			url : ctxp + "/auth/join",
@@ -46,7 +45,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$('#do_login').click(function() {
+	$('#do_login').on('click', function() {
 		$.ajax({
 			type : "POST",
 			url : ctxp + "/auth/login",
@@ -55,13 +54,16 @@ $(document).ready(function() {
 		}).done(function(res) {
 			if (res == 0) {
 				alert('일치하는 ID/비밀번호가 존재하지 않습니다.');
-			} else {
+			} else if(res == 1){
 				location.href = ctxp + 'shopImg/search-slider';
+			} else if(res == -1) {
+				alert('db 연결이 이루어지지 않습니다.');
+			} else {
+				alert('알 수 없는 에러 발생');
 			}
 		}).fail(function(xhr, status, e) {
 			console.log(xhr, status, e);
 		});
 
-	})
+	});
 
-});

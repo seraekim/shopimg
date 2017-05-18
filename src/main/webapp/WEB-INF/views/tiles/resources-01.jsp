@@ -34,7 +34,6 @@
 <script>
 	var ctxp = '${ctxp}';
 </script>
-<script src="resources/js/login.js"></script>
 
 <!--[if lt IE 10]>
             <script src="resources/lib/placeholder.js"></script>
