@@ -21,12 +21,12 @@
                         <label class="login_label" for="">패스워드</label>
                         <input type="password" class="login_input" name="pw">
                     </div>
+                </form>
 
                     <div class="login_button">
-                        <input type="button" id="do_login" class="login_btn gray_btn">로그인
-                        <input type="button" class="login_btn blue_btn">가입하기
+                        <button id="do_login" class="login_btn gray_btn">로그인</button>
+                        <button type="button" class="login_btn blue_btn">가입하기</button>
                     </div>
-                </form>
             </div>
             <div class="log_boxes log_right_box">
                 <div class="log_right_title">소셜로그인</div>
