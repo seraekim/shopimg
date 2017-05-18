@@ -23,8 +23,8 @@
                     </div>   
                     
                     <div class="login_button">
-                        <button id="do_login" class="login_btn gray_btn">로그인</button>
-                        <button class="login_btn blue_btn">가입하기</button>                        
+                        <input type="button" id="do_login" class="login_btn gray_btn">로그인
+                        <input type="button" class="login_btn blue_btn">가입하기                       
                     </div>
                 </form>                     
                 </div>
@@ -37,4 +37,5 @@
             </div>            
         </div>                                        
     </div>
+<script src="resources/js/login.js"></script>
     
