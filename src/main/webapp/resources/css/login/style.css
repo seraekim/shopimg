@@ -85,15 +85,13 @@
 }
 
 .login_input {
-    width:100%;
+    width:300px;
     border-radius:4px;
     background-color:#efefef;
     border:none;
     height:38px;
     padding-left:20px;
 }
-
-
 
 .login_password {
     margin-top:10px;
@@ -104,7 +102,7 @@
     transition: background-color 0.5s ease;
     border-radius:4px;
     width:48%;
-    margin-right:1.4%;
+    /* margin-right:1.4%; */
     border:none;
     height:50px;
     font-size:16px;
@@ -116,10 +114,7 @@
     margin-top:30px
 }
 
-
-
 .gray_btn {
-
     background: #6e6e6e;
 }
 
@@ -182,6 +177,8 @@
     background:#d03726;
 }
 
-
+.right {
+	float: right;
+}
 
 

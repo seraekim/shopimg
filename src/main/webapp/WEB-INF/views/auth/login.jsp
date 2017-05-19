@@ -25,7 +25,7 @@
 
                     <div class="login_button">
                         <button id="do_login" class="login_btn gray_btn">로그인</button>
-                        <button type="button" class="login_btn blue_btn">가입하기</button>
+                        <button type="button" class="login_btn blue_btn right">가입하기</button>
                     </div>
             </div>
             <div class="log_boxes log_right_box">
