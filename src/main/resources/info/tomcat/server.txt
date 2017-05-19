@@ -131,7 +131,7 @@
           <saveOnRestart>false</saveOnRestart>
         </Manager> 
       </Context>
-      <Context sessionCookieName="JSESSIONID02" path="/img" reloadable="true" docBase="D:/shopimg"></Context>
+      <Context sessionCookieName="JSESSIONID02" path="/img" reloadable="true" docBase="//fileserver/working/project_logs/robot/result"></Context>
       </Host>
     </Engine>
   </Service>
