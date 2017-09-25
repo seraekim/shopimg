@@ -26,7 +26,7 @@ public class HomeController {
 		if(id == null) {
 			return "redirect:/auth/login";
 		} else {
-			return "redirect:/shopImg/settings";
+			return "redirect:/shopImg/search-slider";
 		}
 	}
 	

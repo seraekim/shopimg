@@ -202,7 +202,7 @@ $(document).ready(function () {
   		if($(this).hasClass('active')) {
   			$('#form input[name="img1"]').val($('.grid .pin').eq(0).siblings('figure').children('img').attr('src'));
   			$('#form input[name="img2"]').val($('.grid .pin').eq(1).siblings('figure').children('img').attr('src'));
-  			$('#form').attr('action',ctxp + 'shopImg/search-compare').submit();
+  			$('#form').attr('action',ctxp + '/shopImg/search-compare').submit();
   		}
   		
   	});

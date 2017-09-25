@@ -130,7 +130,7 @@ $('#do_settings').click(function() {
 			//alert('refresh');
 			location.reload();
 			//alert('reloaded');
-			//location.href = ctxp + 'shopImg/search';
+			//location.href = ctxp + '/shopImg/search';
 		}
 	}).fail(function(xhr, status, e) {
 		console.log(xhr, status, e);

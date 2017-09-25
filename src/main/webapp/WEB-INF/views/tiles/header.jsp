@@ -19,7 +19,7 @@
 				<!-- /srkim-scroller -->
 			</nav></li>
 		<li><a class="header_logo"><span class="hide">sitescraper</span></a></li>
-		<li class="right"><a class="icon"><i class="mi">person</i><span>test</span></a></li>
+		<li class="right"><a href="auth/logout" class="icon"><i class="mi">person</i><span>test</span></a></li>
 	</ul>
 </div>
 <div id="spinner">
@@ -102,11 +102,10 @@
 	}).ajaxStop(function() {
 		$('#spinner').hide();
 	});
-</script>
-
-<script>
+	
 	var m = '${dateOpt.m}';
 	var sd = '${dateOpt.sd}';
 	var ed = '${dateOpt.ed}';
+	
 </script>
 <script src="resources/js/settings.js"></script>

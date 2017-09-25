@@ -55,7 +55,7 @@
 			if (res == 0) {
 				alert('일치하는 ID/비밀번호가 존재하지 않습니다.');
 			} else if(res == 1){
-				location.href = ctxp + 'shopImg/search-slider';
+				location.href = ctxp + '/shopImg/search-slider';
 			} else if(res == -1) {
 				alert('db 연결이 이루어지지 않습니다.');
 			} else {

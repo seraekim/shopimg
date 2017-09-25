@@ -74,6 +74,6 @@ public class AuthController {
 	public String doLogout(HttpServletRequest httpReq) {
 		HttpSession ss = httpReq.getSession();
 		ss.invalidate();
-		return "auth/login";
+		return "redirect:/auth/login";
 	}
 }
