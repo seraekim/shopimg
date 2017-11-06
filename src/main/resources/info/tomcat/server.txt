@@ -62,7 +62,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="UTF-8" address="0.0.0.0" />
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -127,8 +127,12 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
       
-      <Context docBase="//fileserver/working/project_logs/robot/result" path="/img" reloadable="true" sessionCookieName="JSESSIONID02"/>
-      <Context docBase="shopimg" path="/" reloadable="true" source="org.eclipse.jst.jee.server:shopimg"/></Host>
+        <Context docBase="//fileserver/working/project_logs/robot/result" path="/img" reloadable="true" sessionCookieName="JSESSIONID02"/>
+        <Context docBase="shopimg" path="/" reloadable="true" source="org.eclipse.jst.jee.server:shopimg"/>
+        
+        <!-- <Context sessionCookieName="JSESSIONID02" path="/img" reloadable="true" docBase="/mnt/file/project_logs/robot/result"></Context>
+        <Context sessionCookieName="JSESSIONID01" path="/" reloadable="true" docBase="/home/devgat/srkim/tomcat/webapps/shopimg"></Context> -->
+      </Host>
     </Engine>
   </Service>
 </Server>
