@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.ccbrain.shopimg.service.ShopImgService;
 
 /**
- * Handles requests for the application home page.
+ * 
+ * @author srkim
+ *
  */
 @Controller
 @RequestMapping("/shopImg")

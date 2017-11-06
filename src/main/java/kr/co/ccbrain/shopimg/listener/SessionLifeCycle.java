@@ -6,7 +6,12 @@ import javax.servlet.http.HttpSessionListener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
- 
+
+/**
+ * 
+ * @author srkim
+ *
+ */
 public class SessionLifeCycle implements HttpSessionListener {
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());

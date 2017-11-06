@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ccbrain.shopimg.service.AuthService;
 
+/**
+ * 
+ * @author srkim
+ *
+ */
 @Controller
 @RequestMapping("/auth")
 public class AuthController {

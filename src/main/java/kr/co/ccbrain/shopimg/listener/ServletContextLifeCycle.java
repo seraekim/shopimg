@@ -6,6 +6,11 @@ import javax.servlet.ServletContextListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * @author srkim
+ *
+ */
 public class ServletContextLifeCycle implements ServletContextListener {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());

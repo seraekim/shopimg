@@ -8,15 +8,17 @@ import javax.servlet.SessionTrackingMode;
 
 import org.springframework.web.WebApplicationInitializer;
 
+/**
+ * 
+ * @author srkim
+ *
+ */
 public class WebAppInit implements WebApplicationInitializer {
-
     @Override
     public void onStartup(ServletContext servletContext)
             throws ServletException {
         HashSet<SessionTrackingMode> set = new HashSet<SessionTrackingMode>();
         set.add(SessionTrackingMode.COOKIE);
         servletContext.setSessionTrackingModes(set);
-
     }
-
 }

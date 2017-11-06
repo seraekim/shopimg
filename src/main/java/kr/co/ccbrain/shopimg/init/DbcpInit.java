@@ -17,25 +17,21 @@ public class DbcpInit extends org.apache.commons.dbcp.BasicDataSource {
 
 	@Override
 	protected synchronized DataSource createDataSource() throws SQLException {
-
 		return super.createDataSource();
 	}
 
 	@Override
 	public synchronized void setDriverClassName(String driverClassName) {
-
 		super.setDriverClassName(driverClassName);
 	}
 
 	@Override
 	public synchronized void setUrl(String url) {
-
 		super.setUrl(url);
 	}
 
 	@Override
 	public void setUsername(String username) {
-
 		AES256Util aes256;
 		try {
 			aes256 = new AES256Util();
@@ -43,13 +39,11 @@ public class DbcpInit extends org.apache.commons.dbcp.BasicDataSource {
 		} catch (UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
 			e.printStackTrace();
 		}
-
 		super.setUsername(username);
 	}
 
 	@Override
 	public void setPassword(String password) {
-
 		AES256Util aes256;
 		try {
 			aes256 = new AES256Util();
@@ -57,13 +51,11 @@ public class DbcpInit extends org.apache.commons.dbcp.BasicDataSource {
 		} catch (UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
 			e.printStackTrace();
 		}
-
 		super.setPassword(password);
 	}
 
 	@Override
 	public synchronized void setInitialSize(int initialSize) {
-
 		super.setInitialSize(initialSize);
 	}
 

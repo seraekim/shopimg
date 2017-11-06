@@ -4,6 +4,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 
+ * @author srkim
+ *
+ */
 public class Util {
 	public static void printHttpReq(HttpServletRequest httpReq) {
 		Map<String, String[]> ps = httpReq.getParameterMap();

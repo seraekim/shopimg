@@ -15,7 +15,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 //import static org.fusesource.jansi.Ansi.Color.*;
 /**
  * 
- * shows pre and posthandle with time, remoteIP:port, requestURI in the debug log level.
+ * shows pre and post handle with time, remoteIP:port, requestURI in the debug log level.
  * If there is a need to monitor the whole resource flow
  * including css, js, etc, then remove the condition of indexOf from if clause.
  * 
